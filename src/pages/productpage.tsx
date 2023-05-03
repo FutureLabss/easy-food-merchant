@@ -8,18 +8,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import SearchBar from '../../component/merchant/search';
-import HomeLayout from '../../layout/merchant';
+import SearchBar from '@/component/merchant/search';
+import HomeLayout from '@/layout/merchant';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Button from '@mui/material/Button';
 // import useState
 
 
-import TwoScrollableTabs from '../../component/merchant/taps/twotabs';
-import ButtonAppBar from "../../component/merchant/backbar"
+import TwoScrollableTabs from '@/component/merchant/taps/twotabs';
+import ButtonAppBar from '@/component/merchant/backbar';
 import { useState } from 'react';
-import AllProduct from '../../component/merchant/productstap/allproduct';
-import PendingProduct from '../../component/merchant/productstap/pendingproduct';
+import AllProduct from '@/component/merchant/productstap/allproduct';
+import PendingProduct from '@/component/merchant/productstap/pendingproduct';
 
 function createData(
     foodName: string,

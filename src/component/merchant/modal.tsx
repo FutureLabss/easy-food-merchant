@@ -71,7 +71,7 @@ const handleCloseModal=()=>{
       <Dialog
       sx={{".MuiDialog-paper":{
         width:'393px',
-        marginRight:{md:"20px"}
+        marginRight:{md:"20px", xs:"20px"}
         }}}
         fullScreen
         open={open}
@@ -84,7 +84,7 @@ const handleCloseModal=()=>{
              elevation={0} 
              sx={{backgroundColor: "#F4F5F5" }}>
         <Toolbar>
-          <Link href="/merchant">
+          <Link href="/">
           <IconButton
           onClick={onClose}
             size="large"

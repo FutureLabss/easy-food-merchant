@@ -19,7 +19,7 @@ export default function AppBar(props:prop){
     return(
         <>
         <Stack direction="row" alignItems="center" justifyContent="space-around" spacing={12} mt="20px">
-            <Link href="/merchant/profile">
+            <Link href="/profile">
          <Avatar sx={{ width: "40px", height: "40px" }} >
             <Image src={profile} alt=""/>
          </Avatar>

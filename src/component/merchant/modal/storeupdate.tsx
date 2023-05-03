@@ -40,7 +40,7 @@ export default function SimpleDialog(props: SimpleDialogProps) {
             <Typography sx={{fontSize: "16px", fontWeight: "400", textAlign: "center", color: "#000000"}}>Opening and closing time for your store
           <br/>
           has been updated successfully </Typography>
-          <Link href="/merchant">
+          <Link href="/">
             <Typography sx={{fontSize: "16px", fontWeight: "700", color: "#3BB273",  textAlign: "center", mt: "50px"}}>Ok, Got It</Typography>
           </Link>
         </Box>

@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { icons, IconType } from "react-icons";
 import { useTheme } from "@mui/system";
-import OverViewPage from "@/pages/merchant";
+// import OverViewPage from "@/pages/merchant";
 import { useEffect } from "react";
 import path from "path";
 // import ProductPage from "@/pages/merchant/productpage";
@@ -30,22 +30,22 @@ const data: createdata[] = [
   {
     icon: <MdHome />,
     details: "Overview",
-    path: "/merchant"
+    path: "/"
   },
   {
     icon: <AiFillBank />,
     details: "Products",
-    path: "/merchant/productpage"
+    path: "/productpage"
   },
   {
     icon: <MdOutlineReviews />,
     details: "Wallet",
-    path: "/merchant/wallet/wallet"
+    path: "/wallet/wallet"
   },
   {
     icon: <MdOutlineAccountBalanceWallet />,
     details: "Reviews",
-    path: "/merchant/orderpage"
+    path: "/orderpage"
   },
 ];
 
@@ -127,7 +127,8 @@ export default function BottomBar() {
                 label={items.details}
                 sx={{
                   color: "#717C76",
-                  fontSize:{xs:"0.55em", md:"1vw"}
+                  fontSize:{xs:"13.33px", md:"1vw"},
+                  // background:{":hove"}
                 }}
               />
             ))}

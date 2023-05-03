@@ -1,4 +1,4 @@
-import AppBar from '../../component/merchant/appbar'
+import AppBar from '@/component/merchant/appbar';
 import { SwitchProps } from '@mui/material/Switch';
 import * as React from 'react';
 import FormControl from '@mui/material/FormControl';
@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { styled } from '@mui/material/styles';
-import HomeLayout from '../../layout/merchant'
+import HomeLayout from '@/layout/merchant';
 import {Box, Stack, Typography, Button, Switch, Card, CardContent} from '@mui/material'
 import {AiOutlineDown} from "react-icons/ai"
 import Link from 'next/link'
@@ -97,7 +97,7 @@ export default function StorePage() {
         <Box width="100%">
           <Box sx={{height: "800px"}}>
         <Stack direction="column" alignItems="center" justifyContent="space-around" spacing={3}>
-        <AppBar props={''} url={"/merchant"}   />
+        <AppBar props={''} url={"/"}   />
         <Stack direction="row" spacing= "144px" mt="45px">
             <Typography fontSize="16px" fontWeight="700">Store Status</Typography>
             <Stack direction="row" spacing="10px">

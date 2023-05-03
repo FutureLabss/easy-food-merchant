@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import HomeLayout from '../../../layout/merchant'
+import HomeLayout from '@/layout/merchant';
 import { Grid, Stack , Box, Typography, Button, Container} from "@mui/material"
 import { AiOutlineEye } from "react-icons/ai"
 import { CiWallet } from "react-icons/ci"
 import { BsArrowLeftCircleFill } from "react-icons/bs"
 import  Link from "next/link"
 
-import Modal from "../../../component/merchant/modal/walletModal"
+import Modal from '@/component/merchant/modal/walletModal'
 
-import bgImage from '../../../images/merchant/background.png'
+import bgImage from '../../images/merchant/background.png'
 
 type Cards = {
   title: string;
@@ -117,8 +117,8 @@ borderRadius: "25px", fontSize: "16px", fontWeight: "700", color: "#000000", tex
  
   </Box>
 
-    </HomeLayout>
     <Modal open={modalOpen} onClose={handleCloseModal} />
+    </HomeLayout>
 
     </>
  )

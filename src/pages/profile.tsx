@@ -1,7 +1,7 @@
-import AppBar from '../../component/merchant/appbar'
-import Card1 from '../../component/merchant/card'
+import AppBar from '@/component/merchant/appbar'
+import Card1 from '@/component/merchant/card'
 // import Card2 from '../../component/merchant/cards'
-import HomeLayout from '../../layout/merchant'
+import HomeLayout from '@/layout/merchant'
 import {Box, Stack, Typography, Button, Accordion, AccordionSummary, AccordionDetails, Avatar} from '@mui/material'
 import {AiOutlineRight} from 'react-icons/ai'
 import {FiLogOut} from "react-icons/fi"
@@ -13,7 +13,7 @@ import { MdManageAccounts } from "react-icons/md"
 import { green } from '@mui/material/colors';
 import Link from 'next/link'
 // import {Box} from '@mui/material'
-import profile from "../../images/merchant/Profilephoto.png"
+import profile from "@/images/merchant/Profilephoto.png"
 import Image from "next/image"
 
 export default function ProfilePage() {
@@ -22,7 +22,7 @@ export default function ProfilePage() {
           <Box sx={{ height: "840px", spacing: "15px"}}>
             <Box sx={{backgroundColor: "#F4F5F5", height: "70px", width: "390px"}}>
               <Stack direction="row" spacing="87px" alignItems="center" justifyContent="flexstart" pt="24px">
-                <Link href="/merchant">
+                <Link href="/">
                 <Typography fontSize="16px" fontWeight="700" color="#3BB273" style={{cursor: "pointer"}}><IoIosArrowBack />Back</Typography>
                 </Link>
 <Typography fontSize="16px" fontWeight="700" color="#000000">Account</Typography>

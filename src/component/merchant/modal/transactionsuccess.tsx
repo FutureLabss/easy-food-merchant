@@ -58,7 +58,7 @@ export default function SimpleDialog(props: SimpleDialogProps) {
             <Typography sx={{fontSize: "23.04px",  textAlign: "center", fontWeight: "700", color: "#0F100F"}}>Transaction Successful</Typography>
             <Typography sx={{fontSize: "16px", fontWeight: "400", textAlign: "center", color: "#000000"}}>Your N5000 withdrawal to 2000211109 <br/>
             was successful</Typography>
-            <Link href="/merchant">
+            <Link href="/">
             <Typography sx={{fontSize: "16px", fontWeight: "700", color: "#3BB273",  textAlign: "center", mt: "50px"}}>Back to Home</Typography>
             </Link>
         </Box>

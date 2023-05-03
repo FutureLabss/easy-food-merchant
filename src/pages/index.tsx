@@ -38,7 +38,7 @@ export default function OverViewPage() {
         <Box >
           <Box sx={{backgroundColor: "#1C5436", height: "310px"}}>
         <Stack direction="column" alignItems="center" justifyContent="space-around" spacing={3}>
-        <AppBar url={'/merchant/store'} props={''} />
+        <AppBar url={'/store'} props={''} />
         <Typography fontSize="13.33px" color="#DADDDB" fontWeight="700">Wallet Balance</Typography>
         <Stack direction="row" alignItems="flex-end">
         <Typography  fontSize="16px" color="#AFB6B2" fontWeight="600">N</Typography>
@@ -68,9 +68,12 @@ export default function OverViewPage() {
           <ListItemText primary={<Typography fontSize="16.66px" fontWeight="700">Create Products</Typography>} secondary={<Typography fontSize="13.33px" fontWeight="400">Create Products</Typography>} />
         </ListItem>
       </List>
+      <Link href={"/orderpage"}>
       <List style={{ width: 370 }}>
         <ListItem button secondaryAction={
-                    <IconButton edge="end" onClick={handleOpenModal}>
+                    <IconButton edge="end" 
+                    // onClick={handleOpenModal}
+                    >
                       <AiOutlineRight />
                     </IconButton>
                   }>
@@ -97,6 +100,7 @@ export default function OverViewPage() {
           } secondary={<Typography fontSize="13.33px" fontWeight="400">Create Products</Typography>} />
         </ListItem>
       </List>
+      </Link>
       </Box>
         </Stack>
         <Stack direction="column" alignItems="center" spacing="24px">

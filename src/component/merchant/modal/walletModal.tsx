@@ -38,7 +38,7 @@ const product: state[] = [
 
 
   
-  const Modal: React.FC<ModalProps> = ({ open, onClose }) => {
+  const Modal: React.FC<ModalProps> = ({ open, onClose }) =>{
   const [isOpen, setIsOpen] = useState(open);
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModal = () => {

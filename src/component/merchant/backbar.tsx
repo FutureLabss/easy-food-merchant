@@ -20,7 +20,7 @@ export default function ButtonAppBar(props:prop) {
     <Box sx={{ flexGrow: 1, marginTop: "10px"}}>
       <AppBar position="static" elevation={0} sx={{backgroundColor: "#F4F5F5" ,   }}>
         <Toolbar>
-          <Link href={"/merchant"}>
+          <Link href={"/"}>
           <IconButton
             size="large"
             edge="start"
