@@ -1,28 +1,68 @@
-import { Grid, TextField, Stack, Box } from "@mui/material"
+import { Grid, TextField, Stack, Box, Dialog } from "@mui/material"
 import RoundButton from "@/component/merchant/roundbutton"
 import * as React from 'react';
 import { useRouter } from "next/router";
 import Link from 'next/link'
-type prop={
-    props:string;
-  }
-export default function SignInOption(props:prop){
-    const router = useRouter();
-    const [open, setOpen] = React.useState(false);
-    const handleClick = () => {
-        router.push("/merchant/login")
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
+import { useEffect} from "react"
+// type prop={
+//     props:string;
+//     // onClose: () => void;
+//   }
 
+  const Transition = React.forwardRef(function Transition(
+    props: TransitionProps & {
+      children: React.ReactElement;
+    },
+    ref: React.Ref<unknown>,
+  ) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
+  interface prop {
+    props:string;
+    open: boolean;
+    // onClose: () => void;
+  }
+
+export default function SignInOption(props:prop){
+    // const {open, onClose} = props
+       const router = useRouter();
+    //    const [page, setPage]= React.useState(false)
+    const [open, setOpen] = React.useState(false);
+    useEffect(() => {
+  setOpen(true)    
+    }, [])
+    const handleClick = () => {
+        router.push("/login")
       };
-return(
-    <>
-    <Stack sx={{backgroundColor:"#26734A"}}>
-        <Box sx={{backgroundColor:"#FFFFFF", 
-        mt:{xs:"380px", sm:"277px", md:"30.73vw"}, 
+
+    return(
+        <>
+    <Dialog
+      sx={{".MuiDialog-paper":{
+        width:'393px',
+        // marginRight:{md:"20px", xs:"20px"}
+        height:"47vh",
+        mt:{xs:"320px", sm:"277px", md:"30.73vw"}, 
         borderRadius:" 32px 32px 0px 0px",
+        padding:'16px'
+        }}}
+        // px={10}
+        fullScreen
+        open={open}
+        // onClose={onClose}
+        TransitionComponent={Transition}
+        >
+        <Box sx={{backgroundColor:"#FFFFFF", 
+        borderRadius:" 32px 32px 0px 0px",
+        mt:{xs:"22px", sm:"-277px", md:"-30.73vw"}, 
+
+        pb:"73px",
        }}>
             <Box 
             sx={{ px:{xs:"3.20vw", md:"0.81vw"},
-            mt:{xs:"17px", sm:"25px", md:"2.78vw"},
+            // mt:{xs:"17px", sm:"25px", md:"2.78vw"},
             ml:{md:"20%"} }}>
             <RoundButton
             // onClick={handle}
@@ -33,7 +73,7 @@ return(
             color:"#FFFFFF",
             fontWeight:"700",
             }}>
-             <Link href="/merchant/createaccount">
+             <Link href="/createaccount">
                  Create an Account
             </Link>
              </RoundButton>
@@ -54,9 +94,7 @@ return(
             }}> Login</RoundButton>
             </Box>
         </Box>
-
-    </Stack>
-
-    </>
-)
+        </Dialog>
+        </>
+    )
 }

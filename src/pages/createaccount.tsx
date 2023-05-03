@@ -96,7 +96,7 @@ export default function CreateAccountPage(){
                 <Typography fontSize="16px" fontWeight="400">
                 Don’t have an Account?
                 {/* <RoundButton> */}
-                <Link href="/merchant/login">
+                <Link href="/login">
                 <span style={{color:"#3BB273"}}>
                  Log In
                   </span>

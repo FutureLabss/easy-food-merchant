@@ -133,7 +133,7 @@ export default function LogInPage(){
                 <Typography fontSize="16px" fontWeight="400">
                 Have an Account?
                 {/* <RoundButton> */}
-                <Link href="/merchant/createaccount">
+                <Link href="/createaccount">
                   <span style={{color:"#3BB273"}}>
                  Sign Up
                   </span>
