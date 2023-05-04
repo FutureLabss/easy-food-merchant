@@ -54,9 +54,9 @@ export default function OverViewPage() {
         </Box>   
         <Stack direction="column" alignItems="center" justifyContent="center" mt="-3.64vw">
           <Box sx={{backgroundColor: 'white', borderRadius: '10px', width: '370px'}}>
-        <List style={{ width: 370 }}>
+        <List style={{ width: 370 }} onClick={handleOpenModal}>
         <ListItem button secondaryAction={
-                    <IconButton edge="end" onClick={handleOpenModal}>
+                    <IconButton edge="end" >
                       <AiOutlineRight />
                     </IconButton>
                   }>

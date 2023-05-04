@@ -12,15 +12,15 @@ import Typography from '@mui/material/Typography';
 // import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import BottomBar from '../../component/merchant/bottombar';
+import BottomBar from './bottombar';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Box, Grid, InputLabel, TextField, Stack, FormControl } from '@mui/material';
 import { RiAddFill } from "react-icons/ri"
-import AppBar from '../../component/merchant/appbar';
-import RoundButton from '../../component/merchant/roundbutton';
+import AppBar from './appbar';
+import RoundButton from './roundbutton';
 import ButtonAppBar from './backbar';
-import HomeLayout from '../../layout/merchant';
+import HomeLayout from '@/layout/merchant';
 import ConfirmProduct from './confirmproduct';
 
 type state = {

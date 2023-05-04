@@ -54,21 +54,24 @@ export default function SignInOption(props:prop){
         // onClose={onClose}
         TransitionComponent={Transition}
         >
-        <Box sx={{backgroundColor:"#FFFFFF", 
+        <Box sx={{
+          backgroundColor:"#FFFFFF", 
         borderRadius:" 32px 32px 0px 0px",
-        mt:{xs:"22px", sm:"-277px", md:"-30.73vw"}, 
+        // mt:{xs:"22px", sm:"-277px", md:"10.73vw"}, 
 
-        pb:"73px",
+        // pb:"73px",
        }}>
             <Box 
-            sx={{ px:{xs:"3.20vw", md:"0.81vw"},
-            // mt:{xs:"17px", sm:"25px", md:"2.78vw"},
-            ml:{md:"20%"} }}>
+            sx={{ 
+              px:{xs:"3.20vw", md:"0.21vw"},
+            mt:{xs:"40px", sm:"25px", md:"48px"},
+            // ml:{md:"0%"}
+             }}>
             <RoundButton
             // onClick={handle}
              variant="contained" 
             sx={{ fontSize: "16px", 
-            width:{xs:"100%", sm:"100%", md:"50%"}, 
+            width:{xs:"100%", sm:"100%", md:"100%"}, 
             mt:{xs:"13px", sm:"21px", md:"2vw"},
             color:"#FFFFFF",
             fontWeight:"700",
@@ -81,17 +84,20 @@ export default function SignInOption(props:prop){
             <Box 
             sx={{ px:{xs:"3.20vw", md:"0.81vw"},
             mt:{xs:"5px", sm:"7px", md:"0.81vw"},
-            ml:{md:"20%"}}}>
+            // ml:{md:"20%"}
+            }}>
+              <Link href={"/login"}>
             <RoundButton  
-            onClick={handleClick}
+            // onClick={handleClick}
             sx={{ fontSize: "16px", 
-            width:{xs:"100%", sm:"100%", md:"50%"}, 
-            mt:{xs:"13px", sm:"21px", md:"2vw"},
+            width:{xs:"100%", sm:"100%", md:"100%"}, 
+            mt:{xs:"16px", sm:"21px", md:"2vw"},
             background:"transparent",
             border:"solid 1px gray",
             color:"#0F100F",
             fontWeight:"700"
             }}> Login</RoundButton>
+            </Link>
             </Box>
         </Box>
         </Dialog>

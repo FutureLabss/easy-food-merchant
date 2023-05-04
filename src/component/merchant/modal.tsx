@@ -71,7 +71,7 @@ const handleCloseModal=()=>{
       <Dialog
       sx={{".MuiDialog-paper":{
         width:'393px',
-        marginRight:{md:"20px", xs:"20px"}
+        marginRight:{md:"20px", xs:""}
         }}}
         fullScreen
         open={open}

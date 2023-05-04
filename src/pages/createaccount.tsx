@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import React from "react";
+import React, { useState } from "react";
 import RoundButton from "@/component/merchant/roundbutton";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import IconButton from '@mui/material/IconButton';
@@ -17,6 +17,11 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
 
+
+interface State {
+  phone: string;
+  password: string;
+};
 export default function CreateAccountPage(){
     const [showPassword, setShowPassword] = React.useState(false);
 
@@ -25,10 +30,25 @@ export default function CreateAccountPage(){
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
+
+    const [input, setInput] = useState({phone:'', password:''});
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setInput({ ...input, [name]: value });
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      // login(input)
+      console.log(input)
+    };
+    
   
     return(
         <>
         <Stack component="form" 
+        onSubmit={handleSubmit}
         sx={{backgroundColor:"#26734A"}}>
          <Stack sx={{backgroundColor:"#FFFFFF",
           mt:{xs:"70px", sm:"53px", md:"5.84vw"},
@@ -77,12 +97,16 @@ export default function CreateAccountPage(){
               placeholder="Enter your Phone Number"
               size="small"
               variant="outlined"
+              value={input.phone} 
+              onChange={handleChange}
               fullWidth
-              name="title"
+              name="phone"
             />
           </Grid>
        </Grid>
-            <RoundButton variant="contained" fullWidth
+            <RoundButton variant="contained" 
+            type="submit"
+            fullWidth
             sx={{ fontSize: "16px", 
             fontWeight:"700",
             width:{xs:"100%", sm:"100%", md:"50%"}, 

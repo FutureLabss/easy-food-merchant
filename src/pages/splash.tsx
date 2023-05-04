@@ -34,7 +34,8 @@ return(
     <Stack sx={{backgroundColor:"#26734A", 
     height:"100vh",
     //  border:"solid red", 
-     width:{md:"390px"}
+     width:{md:"390px"},
+     mx:"auto",
 }}>
 
     

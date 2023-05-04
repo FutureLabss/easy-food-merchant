@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import React from "react";
+import React, { useState, ChangeEvent, FormEvent, } from "react";
 import RoundButton from "@/component/merchant/roundbutton";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import IconButton from '@mui/material/IconButton';
@@ -16,25 +16,53 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
+import axios from "axios"
+import { contextProvider } from "../pages/api/context/auth";
+
+interface State {
+  phone: string;
+  password: string;
+};
 
 export default function LogInPage(){
+  const { login } = contextProvider()
     const [showPassword, setShowPassword] = React.useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
+    
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
+
+    const [input, setInput] = useState({phone:'', password:''});
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setInput({ ...input, [name]: value });
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      login(input)
+      console.log(input)
+    };
+    
+
   
     return(
         <>
         <Stack component="form" 
-        sx={{backgroundColor:"#26734A"}}>
+        onSubmit={handleSubmit}
+        sx={{backgroundColor:"#26734A",
+        width:"396px",
+        mx:"auto"
+        }}>
          <Stack sx={{backgroundColor:"#FFFFFF",
           mt:{xs:"70px", sm:"53px", md:"5.84vw"},
-          borderRadius:"16px 16px 0px 0px",}}>
+          borderRadius:"16px 16px 0px 0px",
+          padding:"16px"
+         }}>
         <Stack sx={{
-            mt:"-10px",
+            mt:{xs:"-10px", md:"-25px"},
             backgroundColor:" rgba(255, 255, 255, 0.2)", 
             px:{xs:"10px", sm:"5px", md:"0.58vw"},
             borderRadius:"16px 16px 0px 0px",
@@ -65,7 +93,7 @@ export default function LogInPage(){
             Your customers are just a click away, Login!
             </Typography>
         </Stack>
-       <Grid container  spacing={3}
+       <Grid container  spacing={3} 
         mt={{xs:"11px", sm:"17px", md:"1.85vw"}}
         sx={{px:{xs:"8%", sm:"5px", md:"0.58vw"}}}>
           <Grid container  mt="30px" >
@@ -76,9 +104,12 @@ export default function LogInPage(){
             <TextField
               placeholder="Enter your Phone Number"
               size="small"
+              name="phone" 
+              value={input.phone} 
+              onChange={handleChange}
               variant="outlined"
               fullWidth
-              name="title"
+              // name="title"
             />
           </Grid>
        </Grid>
@@ -89,6 +120,9 @@ export default function LogInPage(){
           Password
         </InputLabel>
         <OutlinedInput
+          name="password"
+          value={input.password} 
+          onChange={handleChange}
             placeholder="Password"
             size="small"
             fullWidth
@@ -119,9 +153,12 @@ export default function LogInPage(){
           </Box>
           </Grid>
           </Grid>
-            <RoundButton variant="contained" fullWidth
+            <RoundButton 
+            variant="contained" 
+            fullWidth
+            type='submit'
             sx={{ fontSize: "16px", 
-            width:{xs:"100%", sm:"100%", md:"50%"}, 
+            width:{xs:"100%", sm:"100%", md:"100%"}, 
             mt:{xs:"14px", sm:"20px", md:"2.26vw"},
             color:"#FFFFFF",
           fontWeight:"700"}}
@@ -147,3 +184,5 @@ export default function LogInPage(){
         </>
     )
 }
+
+
