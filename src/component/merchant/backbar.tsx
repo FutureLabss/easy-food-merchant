@@ -33,7 +33,7 @@ export default function ButtonAppBar(props:prop) {
             Back</Typography>
           </IconButton>
           </Link>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: "center",color: "#000000", fontWeight: "700", fontSize: "16px" }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: "center",color: "#000000", fontWeight: "700", fontSize: "16px", marginLeft: "-6rem" }}>
             {props.name}
           </Typography>
         </Toolbar>

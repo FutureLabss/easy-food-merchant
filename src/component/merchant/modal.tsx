@@ -7,17 +7,17 @@ import Typography from '@mui/material/Typography';
 // import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import BottomBar from '@/component/merchant/bottombar';
+// import BottomBar from '@/component/merchant/bottombar';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { Box, Grid, InputLabel, TextField, Stack, FormControl } from '@mui/material';
 import { RiAddFill } from "react-icons/ri"
 import AppBar from '@mui/material/AppBar';
-import RoundButton  from '@/component/merchant/roundbutton';
+import RoundButton  from '../../component/merchant/roundbutton';
 import ButtonAppBar from './backbar';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Link from 'next/link';
-import HomeLayout from '@/layout/merchant';
+import HomeLayout from '../../layout/merchant';
 import ConfirmProduct from './confirmproduct';
 
 interface data {
@@ -60,6 +60,9 @@ export default function ModalPage(props:prop) {
 const {open, onClose} = props
 const handleOpenModal = ()=> {
   setConfirmOpen(true)
+}
+const checking = ()=> {
+  alert("working")
 }
 const handleCloseModal=()=>{
   setConfirmOpen(false)
@@ -251,7 +254,8 @@ const handleCloseModal=()=>{
           <Box pb={{xs:"23px", sm:"36px", md:"3.75vw"}}>
             {/* <Link href="/merchant/conf"> */}
             <RoundButton 
-            onClick={handleOpenModal}
+            // onClick={handleOpenModal}
+            onClick={checking}
             variant="contained" 
             fullWidth
             sx={{ fontSize: "16px", 

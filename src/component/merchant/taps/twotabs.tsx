@@ -49,8 +49,8 @@ export default function TwoScrollableTabs(props: Props) {
         }}
 
       >
-        <Tab label={props.name1} sx={{ borderRadius: "6px", width: "100%", maxWidth: "25vw", textTransform: "capitalize", fontSize:"13.33px",fontWeight:"500" }} />
-        <Tab label={props.name2} sx={{ borderRadius: "6px", width: "100%", maxWidth: "25vw", textTransform: "capitalize", fontSize:"13.33px",fontWeight:"500" }} />
+        <Tab label={props.name1} sx={{ borderRadius: "6px", width: "100%", maxWidth: {sm: "50%", md: "25vw" } , textTransform: "capitalize", fontSize:"13.33px",fontWeight:"500" }} />
+        <Tab label={props.name2} sx={{ borderRadius: "6px", width: "100%", maxWidth: {sm: "50%", md: "25vw" }, textTransform: "capitalize", fontSize:"13.33px",fontWeight:"500" }} />
 
       </Tabs>
     </Box>
