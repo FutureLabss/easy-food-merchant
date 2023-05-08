@@ -28,6 +28,7 @@ interface State {
 export default function CreateAccountPage(){
     const {signUp} = contextProvider();
     const [input, setInput] = useState({phone:'', password:'', fullname:" john fidelis"});
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     
@@ -39,13 +40,22 @@ export default function CreateAccountPage(){
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       setInput({ ...input, [name]: value });
+      if (validatePhoneNumber(value)) {
+        setPhoneNumber(value);
+      }
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       signUp(input)
       console.log(input)
+      formState({ errors })
     };
+
+    const validatePhoneNumber = (phoneNumber: string): boolean => {
+      const regex = /^\+?\d{1,3}[- ]?\d{3}[- ]?\d{4}$/; // regex for phone number validation
+      return regex.test(phoneNumber); // check if phone number matches regex
+    }
     
   
     return(
@@ -106,6 +116,7 @@ export default function CreateAccountPage(){
               fullWidth
               name="phone"
             />
+            {errors.phone && <p className="error-message">Invalid Phone</p>}
           </Grid>
        </Grid>
 
