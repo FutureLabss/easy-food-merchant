@@ -16,22 +16,25 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
+import { contextProvider } from "./api/context/auth";
+
 
 
 interface State {
   phone: string;
   password: string;
+  fullname: string;
 };
 export default function CreateAccountPage(){
+    const {signUp} = contextProvider();
+    const [input, setInput] = useState({phone:'', password:'', fullname:" john fidelis"});
     const [showPassword, setShowPassword] = React.useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
+    
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
 
-    const [input, setInput] = useState({phone:'', password:''});
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
@@ -40,7 +43,7 @@ export default function CreateAccountPage(){
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      // login(input)
+      signUp(input)
       console.log(input)
     };
     
@@ -94,6 +97,7 @@ export default function CreateAccountPage(){
               Business Phone Number
               </InputLabel>
             <TextField
+            required
               placeholder="Enter your Phone Number"
               size="small"
               variant="outlined"
@@ -104,6 +108,37 @@ export default function CreateAccountPage(){
             />
           </Grid>
        </Grid>
+
+       <Grid container  mt="30px">
+        <Grid item xs={12} md={6} >
+          <InputLabel sx={{fontSize:"16px", color:"#000000",
+        fontWeight:"600"}}>
+          Password
+        </InputLabel>
+        <OutlinedInput
+          name="password"
+          value={input.password} 
+          onChange={handleChange}
+            placeholder="Password"
+            size="small"
+            fullWidth
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+          </Grid>
+          </Grid>
             <RoundButton variant="contained" 
             type="submit"
             fullWidth
