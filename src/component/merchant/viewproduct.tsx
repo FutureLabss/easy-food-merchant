@@ -75,7 +75,7 @@ export default function ViewProduct(props: prop) {
                         //  width:'100%'
                         // width: '393px',
                         // bgcolor:'red',        
-                        marginLeft: { md: "19px", xs: "25px", sm: "-30px" },
+                        // marginLeft: { md: "19px", xs: "25px", sm: "-30px" },
                         // height: "100vh",
                         // mt:'290px',
                         borderRadius: "8px",
@@ -84,7 +84,11 @@ export default function ViewProduct(props: prop) {
                     }
                     
                 }}
+<<<<<<< HEAD
                 fullWidth
+=======
+                fullScreen
+>>>>>>> dbe6f2954492fafa2d3e74b514b77859ac67fe99
                 open={open}
                 onClose={onClose}
                 TransitionComponent={Transition}>
@@ -159,7 +163,7 @@ export default function ViewProduct(props: prop) {
                                 </CardContent>
                                
                             </Card>
-                            <Link href="/merchant/createproduct">
+                            <Link href="/createproduct">
                             <Button 
                             // onClick={handleOpenModal}
                             sx={{ mt: "20px",

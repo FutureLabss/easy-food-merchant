@@ -85,7 +85,7 @@ export default function ConfirmProduct(props: prop) {
                         //  border:'solid red',
                         //  width:'100%'
                         width:'393px',
-                        marginRight:{md:"50px"},
+                        // marginRight:{md:"50px"},
                         // bgcolor:'red',        
                         // marginLeft:{md:"29px", xs:"25px", sm:"-30px"},
                         // height: "auto",
@@ -96,7 +96,7 @@ export default function ConfirmProduct(props: prop) {
                   
                         }
                 }}
-
+                fullScreen
                     open={open}
 
                     onClose={onClose}
@@ -158,7 +158,7 @@ export default function ConfirmProduct(props: prop) {
                                 </CardContent>
 
                             </Card>
-                            <Link href="/merchant/productpage">
+                            <Link href="/productpage">
                             <Button 
                             onClick={onClose}
                             // onClick={handleOpenModal}

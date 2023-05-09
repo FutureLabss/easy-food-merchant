@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Toolbar from '@mui/material/Toolbar';
@@ -19,6 +19,14 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Link from 'next/link';
 import HomeLayout from '../../layout/merchant';
 import ConfirmProduct from './confirmproduct';
+import ImageUpload from "../ImageUpload";
+
+
+
+
+
+
+
 
 interface data {
   name: string;
@@ -55,14 +63,42 @@ const product: state[] = [
     open: boolean;
     onClose: () => void;
   }
+
+  interface createMeal {
+    price: string;
+    meal_name: string;  
+    preparation_time: string;  
+    // pictures:  Array;
+    status: boolean;
+  }
+  
+
+
+
 export default function ModalPage(props:prop) {
+
+  const [mealInput, setMealInput] = useState({price :'', meal_name:'', preparation_time : '', });
+  const [selectedImage, setSelectedImage] = useState<File | null>(null);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setMealInput({ ...mealInput, [name]: value });
+    // if (validatePhoneNumber(value)) {
+    //   setPhoneNumber(value);
+    // }
+  };
+  const handleImageUpload = (file: File) => {
+    setSelectedImage(file);
+  };
+
+
+
   const [confirmopen, setConfirmOpen] = React.useState(false);
 const {open, onClose} = props
 const handleOpenModal = ()=> {
   setConfirmOpen(true)
 }
 const checking = ()=> {
-  alert("working")
+  console.log(mealInput)
 }
 const handleCloseModal=()=>{
   setConfirmOpen(false)
@@ -74,7 +110,7 @@ const handleCloseModal=()=>{
       <Dialog
       sx={{".MuiDialog-paper":{
         width:'393px',
-        marginRight:{md:"20px", xs:"20px"}
+        marginRight:{md:"20px", xs:""}
         }}}
         fullScreen
         open={open}
@@ -120,7 +156,7 @@ const handleCloseModal=()=>{
         <Typography sx={{fontSize:"16px", fontWeight:"700",
          color:"#000000"}}>Product Image</Typography>
 
-        <Box mt={{xs:"13px", sm:"21px", md:"1vw"}}
+        {/* <Box mt={{xs:"13px", sm:"21px", md:"1vw"}}
          sx={{width: {xs:"39px", sm:"63px", md:"6.53vw"},
          height: {xs:"39px", sm:"63px", md:"6.53vw"}, 
          borderRadius:"16px", 
@@ -130,9 +166,13 @@ const handleCloseModal=()=>{
               mt:{xs:"10px", sm:"27px", md:"3vw"},
              mx:{xs:"15px", sm:"27px", md:"2.58vw"},
              }}>
-            <RiAddFill />
+    
+            <RiAddFill >
+    
+            </RiAddFill>
             </Box>
-        </Box>
+        </Box> */}
+        <ImageUpload onUpload={handleImageUpload} />
        
        <Grid container spacing={3} mt={{xs:"13px", sm:"21px", md:"0.5vw"}}>
        <Grid item xs={12} md={12} >
@@ -204,10 +244,12 @@ const handleCloseModal=()=>{
               size="small"
               variant="outlined"
               fullWidth
+              // value={mealInput.meal_name} 
+              onChange={handleChange}
             //   defaultValue={data.title}
             //   value={data.title}
             //   onChange={onChange}
-              name="title"
+              name="meal_name"
               sx={{mt:"10px"}}
             />
           </Grid>
@@ -227,6 +269,9 @@ const handleCloseModal=()=>{
             // defaultValue={data.description}
             name="description"
             // onChange={onChange}
+            
+              // value={mealInput.meal_name} 
+              onChange={handleChange}
             sx={{mt:"10px"}}
           />
           </Grid>
@@ -243,10 +288,13 @@ const handleCloseModal=()=>{
               size="small"
               variant="outlined"
               fullWidth
+              
+              // value={mealInput.meal_name} 
+              onChange={handleChange}
             //   defaultValue={data.title}
             //   value={data.title}
             //   onChange={onChange}
-              name="title"
+              name="price"
               sx={{mt:"10px"}}
             />
             </Grid>

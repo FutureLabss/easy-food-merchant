@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import React from "react";
+import React, { useState } from "react";
 import RoundButton from "@/component/merchant/roundbutton";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import IconButton from '@mui/material/IconButton';
@@ -16,19 +16,52 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
+import { contextProvider } from "./api/context/auth";
 
+
+
+interface State {
+  phone: string;
+  password: string;
+  fullname: string;
+};
 export default function CreateAccountPage(){
+    const {signUp} = contextProvider();
+    const [input, setInput] = useState({phone:'', password:'', fullname:" john fidelis"});
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-  
+    
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
+
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setInput({ ...input, [name]: value });
+      if (validatePhoneNumber(value)) {
+        setPhoneNumber(value);
+      }
+    };
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      signUp(input)
+      console.log(input)
+      formState({ errors })
+    };
+
+    const validatePhoneNumber = (phoneNumber: string): boolean => {
+      const regex = /^\+?\d{1,3}[- ]?\d{3}[- ]?\d{4}$/; // regex for phone number validation
+      return regex.test(phoneNumber); // check if phone number matches regex
+    }
+    
   
     return(
         <>
         <Stack component="form" 
+        onSubmit={handleSubmit}
         sx={{backgroundColor:"#26734A"}}>
          <Stack sx={{backgroundColor:"#FFFFFF",
           mt:{xs:"70px", sm:"53px", md:"5.84vw"},
@@ -74,15 +107,52 @@ export default function CreateAccountPage(){
               Business Phone Number
               </InputLabel>
             <TextField
+            required
               placeholder="Enter your Phone Number"
               size="small"
               variant="outlined"
+              value={input.phone} 
+              onChange={handleChange}
               fullWidth
-              name="title"
+              name="phone"
             />
+            {errors.phone && <p className="error-message">Invalid Phone</p>}
           </Grid>
        </Grid>
-            <RoundButton variant="contained" fullWidth
+
+       <Grid container  mt="30px">
+        <Grid item xs={12} md={6} >
+          <InputLabel sx={{fontSize:"16px", color:"#000000",
+        fontWeight:"600"}}>
+          Password
+        </InputLabel>
+        <OutlinedInput
+          name="password"
+          value={input.password} 
+          onChange={handleChange}
+            placeholder="Password"
+            size="small"
+            fullWidth
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+          </Grid>
+          </Grid>
+            <RoundButton variant="contained" 
+            type="submit"
+            fullWidth
             sx={{ fontSize: "16px", 
             fontWeight:"700",
             width:{xs:"100%", sm:"100%", md:"50%"}, 
@@ -96,7 +166,7 @@ export default function CreateAccountPage(){
                 <Typography fontSize="16px" fontWeight="400">
                 Don’t have an Account?
                 {/* <RoundButton> */}
-                <Link href="/merchant/login">
+                <Link href="/login">
                 <span style={{color:"#3BB273"}}>
                  Log In
                   </span>

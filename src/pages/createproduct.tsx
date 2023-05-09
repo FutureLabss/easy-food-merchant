@@ -1,6 +1,6 @@
-import ModalPage from "../../component/merchant/modal"
+import ModalPage from "@/component/merchant/modal";
 import { Box } from "@mui/material";
-import BottomBar from "../../component/merchant/bottombar";
+import BottomBar from "@/component/merchant/bottombar";
 import React from "react";
 interface state {
     open:boolean;
