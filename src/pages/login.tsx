@@ -17,7 +17,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
 import axios from "axios"
-import { contextProvider } from "../pages/api/context/auth";
+import { contextProvider } from "../context/auth";
 
 interface State {
   phone: string;
