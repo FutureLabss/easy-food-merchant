@@ -16,7 +16,7 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
-import { contextProvider } from "./api/context/auth";
+import { contextProvider } from "../context/auth";
 
 
 
@@ -28,46 +28,40 @@ interface State {
 export default function CreateAccountPage(){
     const {signUp} = contextProvider();
     const [input, setInput] = useState({phone:'', password:'', fullname:" john fidelis"});
-    const [phoneNumber, setPhoneNumber] = useState('');
+    const [phoneNumberError, setPhoneNumberError] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    
     
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
 
+    
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       setInput({ ...input, [name]: value });
-      if (validatePhoneNumber(value)) {
-        setPhoneNumber(value);
-      }
+      
     };
-
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       signUp(input)
       console.log(input)
-      formState({ errors })
-    };
-
-    const validatePhoneNumber = (phoneNumber: string): boolean => {
-      const regex = /^\+?\d{1,3}[- ]?\d{3}[- ]?\d{4}$/; // regex for phone number validation
-      return regex.test(phoneNumber); // check if phone number matches regex
     }
-    
-  
     return(
         <>
         <Stack component="form" 
         onSubmit={handleSubmit}
-        sx={{backgroundColor:"#26734A"}}>
+        sx={{backgroundColor:"#26734A", 
+         width:"396px",
+        mx:"auto"}}>
          <Stack sx={{backgroundColor:"#FFFFFF",
           mt:{xs:"70px", sm:"53px", md:"5.84vw"},
-          borderRadius:"16px 16px 0px 0px",}}>
+          borderRadius:"16px 16px 0px 0px", 
+          padding:"16px"}}>
         <Stack sx={{
-            mt:"-10px",
+            mt:{xs:"-10px", md:"-25px"},
             backgroundColor:" rgba(255, 255, 255, 0.2)", 
             px:{xs:"10px", sm:"5px", md:"0.58vw"},
             borderRadius:"16px 16px 0px 0px",
@@ -116,7 +110,6 @@ export default function CreateAccountPage(){
               fullWidth
               name="phone"
             />
-            {errors.phone && <p className="error-message">Invalid Phone</p>}
           </Grid>
        </Grid>
 
@@ -155,11 +148,12 @@ export default function CreateAccountPage(){
             fullWidth
             sx={{ fontSize: "16px", 
             fontWeight:"700",
-            width:{xs:"100%", sm:"100%", md:"50%"}, 
+            width:{xs:"100%", sm:"100%", md:"100%"}, 
             mt:"30px",
             color:"#FFFFFF",}}
             
             > Proceed </RoundButton>
+           
           
             </Grid>
             <Box sx={{mt:"22px"}}>

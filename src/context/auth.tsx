@@ -2,7 +2,7 @@ import * as React from "react"
 import axios from "axios";
 import { ReactNode, createContext, useContext, useEffect,} from "react";
 // import Router from "next/router";
-import { setToken } from "../services/config";
+import { setToken } from "../pages/api/services/config";
 import Router, { useRouter } from "next/router";
 // import login from "@/pages/login";
 
