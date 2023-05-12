@@ -94,57 +94,63 @@
 //   };
 // }
 
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
-// import { createMealApi } from "../pages/api/meal/createMeal";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { createMealApi } from "../pages/api/meal/createMeal";
+import { IcreateMeal } from "../lib/interfaces/meal"
 
 // interface UseCreateMealApiReturnType {
-//   createMeal: (data: string) => void;
+  // createMeal: (data: string) => void;
 //   loading: boolean;
 //   success: boolean;
 //   error: unknown;
+//   input: string;
 // }
 
-// function useCreateMealApi(callback?: () => void): UseCreateMealApiReturnType {
-//   const queryClient = useQueryClient();
-//   const { isLoading, mutate, error, isSuccess } = useMutation((data: string) => {
-//     return createMealApi(data);
-//   }, {
-//     onSuccess: () => {
-//       queryClient.invalidateQueries(['meal']);
-//     },
-//     onSettled: () => {
-//       callback && callback();
-//     },
-//   });
+function useCreateMealApi() {
+  const queryClient = useQueryClient();
+  const { isLoading, mutate, error, isSuccess } = useMutation< any, any,  IcreateMeal>((input) =>{
+    return createMealApi(input);
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['meal']);
+    },
+    onSettled: () => {
+      callback&&callback();
+    },
+  });
 
-//   return {
-//     createMeal: mutate,
-//     loading: isLoading,
-//     success: isSuccess,
-//     error,
-//   };
-// }
-
-// export { useCreateMealApi }
-
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { createMealApi } from "../pages/api/meal/createmeal";
-interface state{
-    data:string;
+  return {
+    createMeal: mutate,
+    loading: isLoading,
+    success: isSuccess,
+    error,
+  };
 }
-export function useCreateMealApi(){
-    const { data, error,status } = useQuery(
-        ["meal"],
-        (e) => {
-            return createMealApi();
-          },
-          {
-            keepPreviousData: true,
-            refetchOnMount: false,
-            refetchOnWindowFocus: false,
-          }
-    );
-    console.log({ data,error,status });
+
+export { useCreateMealApi }
+
+
+function callback() {
+  throw new Error("Function not implemented.");
+}
+// import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+// import { createMealApi } from "../pages/api/meal/createmeal";
+// interface state{
+//     data:string;
+// }
+// export function useCreateMealApi(){
+//     const { data, error,status } = useQuery(
+//         ["meal"],
+//         (e) => {
+//             return createMealApi();
+//           },
+//           {
+//             keepPreviousData: true,
+//             refetchOnMount: false,
+//             refetchOnWindowFocus: false,
+//           }
+//     );
+//     console.log({ data,error,status });
   
-    return { createMeal: data?.data || [], error };
-  }
+//     return { createMeal: data?.data || [], error };
+  // }

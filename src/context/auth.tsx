@@ -41,10 +41,10 @@ export default function Context({children}: {children: ReactNode}){
             localStorage.setItem('my_id', JSON.stringify(res.data.id));
             
             console.log(res)
-            router.push('/')
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
+            router.push('/')
             return res;
       })
       .catch((e) => {
@@ -61,6 +61,9 @@ export default function Context({children}: {children: ReactNode}){
         return await axios
         .post("/auth/signup", input)
         .then((res) => {
+          localStorage.setItem('token', JSON.stringify(res.data.token));
+          setAuth({ ...res.data });
+            setToken(res.data.token);
           router.push('/login')
           return res;
         })
