@@ -4,6 +4,7 @@ import { ReactNode, createContext, useContext, useEffect,} from "react";
 // import Router from "next/router";
 import { setToken } from "../pages/api/services/config";
 import Router, { useRouter } from "next/router";
+import { ISignUp } from "@/lib/interfaces/signup";
 // import login from "@/pages/login";
 
 // import { types } from "util";
@@ -33,15 +34,15 @@ export default function Context({children}: {children: ReactNode}){
       setAuth(details);
     }, []);
 
-    const login = async (input: string) => {
+    const login = async (input: ISignUp) => {
         const Promise =  await axios
           .post("/auth/signin", input)
           .then((res) => {
             localStorage.setItem('token', JSON.stringify(res.data.token));
-            router.push('/')
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
+            router.push('/')
             return res;
       })
       .catch((e) => {
@@ -53,11 +54,14 @@ export default function Context({children}: {children: ReactNode}){
 
       };
 
-      const signUp = async (input: string) =>{
+      const signUp = async (input: ISignUp) =>{
         console.log(input)
         return await axios
         .post("/auth/signup", input)
         .then((res) => {
+          localStorage.setItem('token', JSON.stringify(res.data.token));
+          setToken(res.data.token)
+          console.log(res.data.token)
           router.push('/login')
           return res;
         })
