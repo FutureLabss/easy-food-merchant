@@ -20,8 +20,11 @@ import { RiAddFill } from "react-icons/ri"
 import AppBar from './appbar';
 import RoundButton from './roundbutton';
 import ButtonAppBar from './backbar';
-import HomeLayout from '@/layout/merchant';
+import HomeLayout from '../../layout/merchant';
 import ConfirmProduct from './confirmproduct';
+
+
+
 
 type state = {
     item1: string;

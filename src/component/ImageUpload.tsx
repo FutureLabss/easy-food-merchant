@@ -18,23 +18,31 @@ const ImageUpload: React.FC<Props> = ({ onUpload }) => {
 
   return (
     <div>
-      <input type="file" accept="image/*" ref={inputRef} onChange={handleFileUpload} style={{ display: 'none' }} />
-      <button onClick={() => inputRef.current?.click()}>
-      <Box mt={{xs:"13px", sm:"21px", md:"1vw"}}
-         sx={{width: {xs:"39px", sm:"63px", md:"6.53vw"},
-         height: {xs:"39px", sm:"63px", md:"6.53vw"}, 
-         borderRadius:"16px", 
-         background: "#F4F5F5",
-         border: "1px dashed #99A39E"}}>
-            <Box sx={{
-              mt:{xs:"10px", sm:"27px", md:"3vw"},
-             mx:{xs:"15px", sm:"27px", md:"2.58vw"},
-             }}>
-    
+      <input type="file" accept="image/*" ref={inputRef} onChange={handleFileUpload} style={{ display: 'none', }} />
+      <button onClick={() => inputRef.current?.click()} style={{
+
+        // width: { xs: "39px", sm: "63px", md: "6.53vw" },
+        // height: { xs: "39px", sm: "63px", md: "6.53vw" },
+        borderRadius: "16px",
+        background: "#F4F5F5",
+        border: "1px dashed #99A39E"
+      }}>
+        <Box mt={{ xs: "13px", sm: "21px", md: "1vw" }}
+        //  sx={{width: {xs:"39px", sm:"63px", md:"6.53vw"},
+        //  height: {xs:"39px", sm:"63px", md:"6.53vw"}, 
+        //  borderRadius:"16px", 
+        //  background: "#F4F5F5",
+        //  border: "1px dashed #99A39E"}}
+        >
+          <Box sx={{
+            mt: { xs: "10px", sm: "27px", md: "3vw" },
+            mx: { xs: "15px", sm: "27px", md: "2.58vw" },
+          }}>
+
             <RiAddFill >
-    
+
             </RiAddFill>
-            </Box>
+          </Box>
         </Box>
       </button>
     </div>

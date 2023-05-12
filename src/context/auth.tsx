@@ -38,6 +38,9 @@ export default function Context({children}: {children: ReactNode}){
           .post("/auth/signin", input)
           .then((res) => {
             localStorage.setItem('token', JSON.stringify(res.data.token));
+            localStorage.setItem('my_id', JSON.stringify(res.data.id));
+            
+            console.log(res)
             router.push('/')
             console.log(input)
             setAuth({ ...res.data });
