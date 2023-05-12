@@ -17,7 +17,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
 import { contextProvider } from "../context/auth";
-import { useCreateMerchantProfile } from '../hooks/profile'
+// import { useCreateMerchantProfile } from '../hooks/profile'
 import { ISignUp } from "@/lib/interfaces/signup";
 
 
@@ -33,8 +33,8 @@ export default function CreateAccountPage(){
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const {createMerchantProfile, loading:editLoading} = useCreateMerchantProfile();
-    console.log({createMerchantProfile})
+    // const {createMerchantProfile, loading:editLoading} = useCreateMerchantProfile();
+    // console.log({createMerchantProfile})
     
     
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +49,7 @@ export default function CreateAccountPage(){
       event.preventDefault();
       signUp(input)
       console.log(input)
-      createMerchantProfile(input)
+      // createMerchantProfile(input)
     }
     return(
         <>

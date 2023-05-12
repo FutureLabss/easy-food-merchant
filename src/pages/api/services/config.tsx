@@ -5,5 +5,6 @@ axios.defaults.baseURL = 'https://easy-food-test.onrender.com/'
 
 
 export function setToken(token: string | null): void {
-    axios.defaults.headers.common.Authorization = token?`Bearer ${token}` : "";
+    axios.defaults.headers.common.Authorization = token? `Bearer ${token}` : "";
+    axios.defaults.headers.common.Token = token ? `${token}` : '';
 }

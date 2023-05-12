@@ -3,7 +3,7 @@ import axios from "axios";
 // interface state{
 //   data: string
 // }
-const CreateMerchantProfileApi  = async (input: ISignUp) =>{
+const CreateMerchantProfileApi  = async (input: ISignUp) => {
   console.log("api")
   const merchant = await axios
   .post(`/merchant`, input)
