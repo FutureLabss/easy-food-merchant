@@ -11,11 +11,11 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 // import HomeLayout from '@/layout/merchant';
-import SearchBar from '@/component/merchant/search';
-import FourScrollableTabs from '@/component/merchant/taps/fourtap';
-import ButtonAppBar from '@/component/merchant/backbar';
+import SearchBar from '../component/merchant/search';
+import FourScrollableTabs from '../component/merchant/taps/fourtap';
+import ButtonAppBar from '../component/merchant/backbar';
 // import ConfirmProduct from '@/component/merchant/confirmproduct';
-import ViewProduct from '@/component/merchant/viewproduct';
+import ViewProduct from '../component/merchant/viewproduct';
 import { Stack } from "@mui/material"
 import { useAllOrder } from '@/hooks/orders';
 

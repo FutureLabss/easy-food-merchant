@@ -90,7 +90,7 @@ export default function PendingProductPage() {
                     </TableContainer>
                     <Button 
                     onClick={handleOpenModal} 
-                    sx={{ mt: "20px", fontWeight: "700", fontSize: "16px", color: "#FFFFFF", textTransform: "capitalize", background: "#3BB273", borderRadius: "8px", position: "fixed",bottom: 87, width: { md: '355px', xs: "320px" }, }} variant="contained" size="large" fullWidth>
+                    sx={{ mt: "20px", fontWeight: "700", fontSize: "16px", color: "#FFFFFF", textTransform: "capitalize", background: "#3BB273", borderRadius: "8px", position: "fixed",bottom: 87, width: { md: '355px', xs: "10rem" }, }} variant="contained" size="large" fullWidth>
                     {/* <Link href="/merchant/createproduct"> */}
                         Create Products
                     {/* </Link> */}

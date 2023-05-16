@@ -67,13 +67,13 @@ export default function ViewProduct(props: prop) {
 
     return (
         // <HomeLayout>
-        <Stack component="form">
+        <Stack component="form" >
             <Dialog
                 sx={{
                     ".MuiDialog-paper": {
                         //  border:'solid red',
                         //  width:'100%'
-                        width: '393px',
+                        // width: '393px',
                         // bgcolor:'red',        
                         // marginLeft: { md: "19px", xs: "25px", sm: "-30px" },
                         // height: "100vh",
@@ -82,6 +82,7 @@ export default function ViewProduct(props: prop) {
                         mt: "90px",
 
                     }
+                    
                 }}
                 fullScreen
                 open={open}

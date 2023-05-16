@@ -2,5 +2,9 @@ export interface ISignUp{
     phone: string;
     password: string;
     fullname: string;
-    // createMerchantProfile:() => void;
+}
+export interface ISignUpForm{
+    phone: string;
+    password: string;
+    fullname: string;
 }

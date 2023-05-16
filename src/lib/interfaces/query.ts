@@ -20,7 +20,7 @@ export interface IAPIFilter {
 //     callback: (arg: unknown) => Promise<IPaginatedReturns<IReturn>>;
 //   }
   
-  export interface IMutationResponse<IArg = unknown, IReturn = unknown> {
+  export interface IMutationResponse <IArg = unknown, IReturn = unknown> {
     mutate: unknown;
     status: string;
   }

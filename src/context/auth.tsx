@@ -29,7 +29,7 @@ export default function Context({children}: {children: ReactNode}){
     const router = useRouter();
 
     useEffect(() => {
-      let details = JSON.parse(localStorage.getItem("getToken") || "{}");
+      let details = JSON.parse(localStorage.getItem("token") || "{}");
       setToken(details?.token);
       setAuth(details);
     }, []);
@@ -38,7 +38,7 @@ export default function Context({children}: {children: ReactNode}){
         const Promise =  await axios
           .post("/auth/signin", input)
           .then((res) => {
-            localStorage.setItem('token', JSON.stringify(res.data.token));
+            localStorage.setItem('token', JSON.stringify(res.data));
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
@@ -59,9 +59,9 @@ export default function Context({children}: {children: ReactNode}){
         return await axios
         .post("/auth/signup", input)
         .then((res) => {
-          localStorage.setItem('token', JSON.stringify(res.data.token));
-          setToken(res.data.token)
-          console.log(res.data.token)
+          localStorage.setItem('token', JSON.stringify(res.data));
+          // setAuth({ ...res.data });
+            setToken(res.data.token);
           router.push('/login')
           return res;
         })
