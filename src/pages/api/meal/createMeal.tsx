@@ -5,7 +5,7 @@ import axios from "axios";
 import { ReactNode, createContext, useContext, useEffect,} from "react";
 import { IcreateMeal } from "../../../lib/interfaces/meal"
 
-let merchant_id = localStorage.getItem("token")
+
 
 // useEffect(() => {
 //   let details = JSON.parse(localStorage.getItem("getToken") || "{}");
@@ -17,6 +17,8 @@ interface state{
     // createMealApi: () => void;
 }
 const createMealApi = async(input: IcreateMeal) => {
+    let merchant_id = localStorage.getItem("my_id")
+    console.log(merchant_id)
     return await axios
     .post(`/meal/${merchant_id}`, input)
     // .post(`/meal/645ba68e70cd40a1a0ec75ea`, input)

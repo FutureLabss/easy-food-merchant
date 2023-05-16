@@ -84,11 +84,7 @@ export default function ViewProduct(props: prop) {
                     }
                     
                 }}
-<<<<<<< HEAD
-                fullWidth
-=======
                 fullScreen
->>>>>>> dbe6f2954492fafa2d3e74b514b77859ac67fe99
                 open={open}
                 onClose={onClose}
                 TransitionComponent={Transition}>
