@@ -62,7 +62,7 @@ export default function LogInPage(){
           padding:"16px"
          }}>
         <Stack sx={{
-            mt:{xs:"-10px", md:"-25px"},
+            mt:{xs:"-28px", md:"-25px"},
             backgroundColor:" rgba(255, 255, 255, 0.2)", 
             px:{xs:"10px", sm:"5px", md:"0.58vw"},
             borderRadius:"16px 16px 0px 0px",

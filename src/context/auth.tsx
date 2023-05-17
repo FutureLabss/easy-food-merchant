@@ -4,6 +4,7 @@ import { ReactNode, createContext, useContext, useEffect,} from "react";
 // import Router from "next/router";
 import { setToken } from "../pages/api/services/config";
 import Router, { useRouter } from "next/router";
+import { ISignUp } from "@/lib/interfaces/signup";
 // import login from "@/pages/login";
 
 // import { types } from "util";
@@ -28,19 +29,16 @@ export default function Context({children}: {children: ReactNode}){
     const router = useRouter();
 
     useEffect(() => {
-      let details = JSON.parse(localStorage.getItem("getToken") || "{}");
+      let details = JSON.parse(localStorage.getItem("token") || "{}");
       setToken(details?.token);
       setAuth(details);
     }, []);
 
-    const login = async (input: string) => {
+    const login = async (input: ISignUp) => {
         const Promise =  await axios
           .post("/auth/signin", input)
           .then((res) => {
-            localStorage.setItem('token', JSON.stringify(res.data.token));
-            localStorage.setItem('my_id', JSON.stringify(res.data.id));
-            
-            console.log(res)
+            localStorage.setItem('token', JSON.stringify(res.data));
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
@@ -56,13 +54,13 @@ export default function Context({children}: {children: ReactNode}){
 
       };
 
-      const signUp = async (input: string) =>{
+      const signUp = async (input: ISignUp) =>{
         console.log(input)
         return await axios
         .post("/auth/signup", input)
         .then((res) => {
-          localStorage.setItem('token', JSON.stringify(res.data.token));
-          setAuth({ ...res.data });
+          localStorage.setItem('token', JSON.stringify(res.data));
+          // setAuth({ ...res.data });
             setToken(res.data.token);
           router.push('/login')
           return res;

@@ -95,7 +95,7 @@
 // }
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createMealApi } from "../pages/api/meal/createMeal";
+import { createMealApi } from "../pages/api/services/createMeal";
 import { IcreateMeal } from "../lib/interfaces/meal"
 
 // interface UseCreateMealApiReturnType {

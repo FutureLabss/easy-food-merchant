@@ -17,28 +17,29 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
 import { contextProvider } from "../context/auth";
+// import { useCreateMerchantProfile } from '../hooks/profile'
+import { ISignUp } from "@/lib/interfaces/signup";
 
 
 
-interface State {
-  phone: string;
-  password: string;
-  fullname: string;
-};
+// interface State {
+//   phone: string;
+//   password: string;
+//   fullname: string;
+// };
 export default function CreateAccountPage(){
     const {signUp} = contextProvider();
-    const [input, setInput] = useState({phone:'', password:'', fullname:" john fidelis"});
+    const [input, setInput] = useState <ISignUp>({phone:'', password:'', fullname:" john fidelis"});
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    // const {createMerchantProfile, loading:editLoading} = useCreateMerchantProfile();
+    // console.log({createMerchantProfile})
     
     
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
     };
-
-    
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       setInput({ ...input, [name]: value });
@@ -48,6 +49,7 @@ export default function CreateAccountPage(){
       event.preventDefault();
       signUp(input)
       console.log(input)
+      // createMerchantProfile(input)
     }
     return(
         <>
@@ -61,7 +63,7 @@ export default function CreateAccountPage(){
           borderRadius:"16px 16px 0px 0px", 
           padding:"16px"}}>
         <Stack sx={{
-            mt:{xs:"-10px", md:"-25px"},
+            mt:{xs:"-28px", md:"-25px"},
             backgroundColor:" rgba(255, 255, 255, 0.2)", 
             px:{xs:"10px", sm:"5px", md:"0.58vw"},
             borderRadius:"16px 16px 0px 0px",
