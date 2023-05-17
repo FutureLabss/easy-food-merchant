@@ -29,7 +29,7 @@ import { ISignUp } from "@/lib/interfaces/signup";
 // };
 export default function CreateAccountPage(){
     const {signUp} = contextProvider();
-    const [input, setInput] = useState <ISignUp>({phone:'', password:'', fullname:" john fidelis"});
+    const [input, setInput] = useState <ISignUp>({phone:'', password:'', fullname:" john fidelis", role:"merchant"});
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
