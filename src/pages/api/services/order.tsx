@@ -3,7 +3,6 @@ interface state{
     getAllArderApi: () => void;
 }
 
-
 const getAllOrderApi = async() =>{
     return await axios
     .get(`/order/all`)
