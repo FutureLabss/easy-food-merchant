@@ -87,7 +87,7 @@ export default function ModalPage(props: prop) {
   console.log(data)
  
 
-  const [mealInput, setMealInput] = useState({ price: '', meal_name: '', preparation_time: '10min', });
+  const [mealInput, setMealInput] = useState({ price: 1000, meal_name: '', preparation_time: 10, category: "Fast-food" });
   // const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [pictures, setPictures] = useState<string[]>([]);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

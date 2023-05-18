@@ -1,16 +1,18 @@
 export interface IcreateMeal {
-    price: string;
+    price: number;
     meal_name: string;
-    preparation_time: string;
+    preparation_time: number;
+    category: string;
     // pictures: string[];
     // status: boolean;
     // file: [];
   }
   
 export interface IcreateMealModal {
-    price: string;
+    price: number;
     meal_name: string;
-    preparation_time: string;
+    preparation_time: number;
+    category: string;
     // pictures: string[];
     // status: boolean;
     // file: [];
