@@ -105,6 +105,7 @@ export default function BottomBar() {
         }}></Box>
       
         <Stack sx={{
+          mt:"30px",
           boxShadow: '2px 3px 10px rgba(0, 0, 0, .5)',
           // Shadow: '2px 3px 10px gray',
         borderTop:"  solid  rgba(0, 0, 0, .2)",
