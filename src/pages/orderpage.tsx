@@ -17,7 +17,7 @@ import ButtonAppBar from '../component/merchant/backbar';
 // import ConfirmProduct from '@/component/merchant/confirmproduct';
 import ViewProduct from '../component/merchant/viewproduct';
 import { Stack } from "@mui/material"
-import { useAllOrder } from '@/hooks/orders';
+// import { useAllOrder } from '@/hooks/orders';
 
 
 
@@ -51,9 +51,10 @@ const rows = [
 
 export default function OrderPage() {
     const [open, setOpen] = React.useState(false);
-    const {orders} = useAllOrder()
+    // const {orders} = useAllOrder()
    
 
+    
     const handleClickOpen = () => {
 
         setOpen(true);
