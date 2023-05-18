@@ -17,7 +17,7 @@ import ButtonAppBar from '../component/merchant/backbar';
 // import ConfirmProduct from '@/component/merchant/confirmproduct';
 import ViewProduct from '../component/merchant/viewproduct';
 import { Stack } from "@mui/material"
-import { useAllOrder } from '@/hooks/orders';
+// import { useAllOrder } from '@/hooks/orders';
 
 
 
@@ -51,7 +51,7 @@ const rows = [
 
 export default function OrderPage() {
     const [open, setOpen] = React.useState(false);
-    const {orders} = useAllOrder()
+    // const {orders} = useAllOrder()
    
 
     const handleClickOpen = () => {
@@ -60,10 +60,10 @@ export default function OrderPage() {
         
     };
 
-    const handleClose = () => {
+    // const handleClose = () => {
         
-        setOpen(false);
-    };
+    //     setOpen(false);
+    // };
     return (
     // <HomeLayout>
         <Stack width="390px" mx="auto">
@@ -78,8 +78,10 @@ export default function OrderPage() {
             <div style={{marginTop: "16px"}}>
                 <FourScrollableTabs name1={"All"} name2={"Pending"} name3={"Approved"} name4={"Cancelled"}/>
             </div>
-            
-            { open? <ViewProduct open={open} onClose={handleClose}  /> : null }
+            {/* onClose={handleClose} */}
+            { open? <ViewProduct open={open} onClose={function (): void {
+                    throw new Error('Function not implemented.');
+                } }   /> : null }
 
 
             <div style={{marginTop: "16px"}}>

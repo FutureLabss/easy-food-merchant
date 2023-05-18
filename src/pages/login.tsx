@@ -1,4 +1,11 @@
-import {Stack, Box, TextField, InputLabel, Grid, Select} from "@mui/material"
+import {Stack, 
+  Box, 
+  TextField, 
+  InputLabel, 
+  Grid, 
+  Select,
+  Alert,
+} from "@mui/material"
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
@@ -31,6 +38,7 @@ export default function LogInPage(){
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState("");
     
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
@@ -45,9 +53,21 @@ export default function LogInPage(){
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      login(input)
-      setLoading(true)
-      console.log(input)
+      // login(input)
+      // setLoading(true)
+      // console.log(input)
+      try {
+        setLoading(true);
+       await login(input)
+        // Perform your async operation, e.g., API call
+        // await yourAsyncFunction(data);
+        setLoading(false);
+      } catch (e: any) {
+        // console.log(error)
+        setError(e.message);
+        setLoading(false);
+        // Handle the error
+      }
     };
     
 
@@ -118,6 +138,9 @@ export default function LogInPage(){
               fullWidth
               // name="title"
             />
+            <Box sx={{mt:"10px"}}>
+          {error && <Alert severity="error">{error}</Alert>}
+          </Box>
           </Grid>
        </Grid>
        <Grid container  mt="30px">

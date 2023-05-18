@@ -71,7 +71,7 @@ export default function AllProduct() {
 
                
 
-                <div style={{ marginTop: "16px",  }}>
+                <div style={{ marginTop: "16px",  marginBottom:"100px"}}>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: "100%" }} aria-label="simple table">
                         { open? <ViewProduct open={open} onClose={handleClose}  /> : null }

@@ -153,12 +153,14 @@ export default function CreateAccountPage(){
               name="phone"
             />
             {errors.phone && errors.phone.type === "required" && (
-            <p>Phone is required</p>
+            <p style={{color:"red", fontSize:"14px"}}>Phone is required</p>
             )}
           {errors.phone && errors.phone.type === "minLength" && (
-            <p>Phone must be at least 10 characters long</p>
+            <p style={{color:"red", fontSize:"14px"}}>Phone must be at least 10 characters long</p>
           )}
+          <Box sx={{mt:"10px"}}>
           {error && <Alert severity="error">{error}</Alert>}
+          </Box>
             {/* {phone.error} */}
           </Grid>
        </Grid>
@@ -194,14 +196,14 @@ export default function CreateAccountPage(){
           />
           {/* <p> Password must be at least 8 characters long </p> */}
           {errors.password && errors.password.type === "required" && (
-            <p> Password is required </p>
+            <p style={{color:"red", fontSize:"14px"}}> Password is required </p>
           )}
           {errors.password && errors.password.type === "minLength" && (
-       <p> Password must be at least 8 characters long </p>
+       <p style={{color:"red", fontSize:"14px"}}> Password must be at least 8 characters long </p>
       )}
 
       {errors.password && errors.password.type === "maxLength" && (
-        <p>Password cannot be more than 20 characters long</p>
+        <p style={{color:"red", fontSize:"14px"}}>Password cannot be more than 20 characters long</p>
       )}
           </Grid>
           </Grid>
