@@ -61,10 +61,10 @@ export default function OrderPage() {
         
     };
 
-    const handleClose = () => {
+    // const handleClose = () => {
         
-        setOpen(false);
-    };
+    //     setOpen(false);
+    // };
     return (
     // <HomeLayout>
         <Stack width="390px" mx="auto">
@@ -79,8 +79,10 @@ export default function OrderPage() {
             <div style={{marginTop: "16px"}}>
                 <FourScrollableTabs name1={"All"} name2={"Pending"} name3={"Approved"} name4={"Cancelled"}/>
             </div>
-            
-            { open? <ViewProduct open={open} onClose={handleClose}  /> : null }
+            {/* onClose={handleClose} */}
+            { open? <ViewProduct open={open} onClose={function (): void {
+                    throw new Error('Function not implemented.');
+                } }   /> : null }
 
 
             <div style={{marginTop: "16px"}}>
