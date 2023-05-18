@@ -18,6 +18,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Link from 'next/link'
 import axios from "axios"
 import { contextProvider } from "../context/auth";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 interface State {
   phone: string;
@@ -28,6 +30,7 @@ export default function LogInPage(){
   const { login } = contextProvider()
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const [loading, setLoading] = React.useState(false);
     
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
@@ -43,6 +46,7 @@ export default function LogInPage(){
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       login(input)
+      setLoading(true)
       console.log(input)
     };
     
@@ -57,7 +61,7 @@ export default function LogInPage(){
         mx:"auto"
         }}>
          <Stack sx={{backgroundColor:"#FFFFFF",
-          mt:{xs:"70px", sm:"53px", md:"5.84vw"},
+          mt:{xs:"100px", sm:"53px", md:"5.84vw"},
           borderRadius:"16px 16px 0px 0px",
           padding:"16px"
          }}>
@@ -66,27 +70,30 @@ export default function LogInPage(){
             backgroundColor:" rgba(255, 255, 255, 0.2)", 
             px:{xs:"10px", sm:"5px", md:"0.58vw"},
             borderRadius:"16px 16px 0px 0px",
+            height:{xs:"115vh", md:""},
             }}>
             <Box  sx={{width: {xs:"39px", sm:"63px", md:"6.53vw"},
-                mt:{xs:"25px", sm:"21px", md:"2.31vw"},
+                mt:{xs:"40px", sm:"21px", md:"2.31vw"},
                 height: {xs:"39px", sm:"63px", md:"6.53vw"}, 
                 borderRadius:"20px", 
                 border: "1px solid  #99A39E"}}>
+                   <Link href="/splash">
                 <Box sx={{mt:{xs:"10px", sm:"27px", md:"1.78vw"},
                 mx:{xs:"10px", sm:"27px", md:"2.28vw"},
                 }}>
                 <ArrowBackIosNewIcon />
                 </Box>
+                </Link>
             </Box>
         <Stack>
             <Typography sx={{
-                fontSize:"27.65px",
+                fontSize:"29.85px",
                 mt:{xs:"10px", sm:"15px", md:"1.62vw"},
                 fontWeight:"700",
             }}>
             Login
             </Typography>
-            <Typography sx={{fontSize:"16px", 
+            <Typography sx={{fontSize:"18px", 
             color:"#717C76", 
             mt:"8px", 
             fontWeight:"400"}}>
@@ -94,7 +101,7 @@ export default function LogInPage(){
             </Typography>
         </Stack>
        <Grid container  spacing={3} 
-        mt={{xs:"11px", sm:"17px", md:"1.85vw"}}
+        mt={{xs:"20px", sm:"17px", md:"1.85vw"}}
         sx={{px:{xs:"8%", sm:"5px", md:"0.58vw"}}}>
           <Grid container  mt="30px" >
           <Grid item xs={12} md={6}>
@@ -153,20 +160,26 @@ export default function LogInPage(){
           </Box>
           </Grid>
           </Grid>
+          {loading ? <RoundButton className="text-center" 
+          sx={{mx:"auto", mt:"20px", 
+          backgroundColor:"inherit"}}> 
+            <CircularProgress color="inherit" />
+            </RoundButton> :
             <RoundButton 
             variant="contained" 
             fullWidth
             type='submit'
             sx={{ fontSize: "16px", 
             width:{xs:"100%", sm:"100%", md:"100%"}, 
-            mt:{xs:"14px", sm:"20px", md:"2.26vw"},
+            mt:{xs:"30px", sm:"20px", md:"2.26vw"},
             color:"#FFFFFF",
-          fontWeight:"700"}}
+          fontWeight:"700",
+        padding:"13px"}}
             
-            > Log In </RoundButton>
+            > Log In </RoundButton>}
           
             </Grid>
-            <Box sx={{mt:"22px"}}>
+            <Box sx={{mt:"30px"}}>
                 <Typography fontSize="16px" fontWeight="400">
                 Have an Account?
                 {/* <RoundButton> */}
