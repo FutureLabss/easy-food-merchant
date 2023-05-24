@@ -35,7 +35,7 @@ export default function OverViewPage() {
   }
     return (
         <HomeLayout>
-        <Box >
+        <Box sx={{mb:"100px"}}>
           <Box sx={{backgroundColor: "#1C5436", height: "310px"}}>
         <Stack direction="column" alignItems="center" justifyContent="space-around" spacing={3}>
         <AppBar url={'/store'} props={''} />

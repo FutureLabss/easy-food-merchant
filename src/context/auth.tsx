@@ -27,6 +27,7 @@ const usecontext = createContext<AuthContextType>({
 export default function Context({children}: {children: ReactNode}){
     const [auth, setAuth] = React.useState({})
     const router = useRouter();
+    const [error, setError] = React.useState()
 
     useEffect(() => {
       let details = JSON.parse(localStorage.getItem("token") || "{}");
@@ -42,7 +43,7 @@ export default function Context({children}: {children: ReactNode}){
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
-            router.push('/')
+            router.push('/overview')
             return res;
       })
       .catch((e) => {
@@ -63,10 +64,13 @@ export default function Context({children}: {children: ReactNode}){
           // setAuth({ ...res.data });
             setToken(res.data.token);
           router.push('/login')
+          // setLoading(0);
           return res;
         })
         .catch((e) => {
-          console.log(e)
+          const message = e.response?.data?.message || "Network Error";
+        throw new Error(message);
+          // console.log(e)
         });
 
       }

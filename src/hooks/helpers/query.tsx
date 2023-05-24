@@ -1,7 +1,7 @@
 import { IQueryArgs } from "../../lib/interfaces/query";
 import { useQuery } from "@tanstack/react-query";
 
-export function useMerchantQuery<IReturn>({ callback, key }: IQueryArgs<IReturn>) {
+export function useMerchantQuery<IArg, IReturn>({ callback, key }: IQueryArgs<IArg, IReturn>) {
     const { status, data, isLoading, error } = useQuery(key, (arg) => {
       return callback && callback(arg);
     });

@@ -3,7 +3,7 @@ export interface IcreateMeal {
     meal_name: string;
     preparation_time: number;
     category: string;
-    // pictures: string[];
+    pictures: string[];
     // status: boolean;
     // file: [];
   }
@@ -13,7 +13,7 @@ export interface IcreateMealModal {
     meal_name: string;
     preparation_time: number;
     category: string;
-    // pictures: string[];
+    pictures: string[];
     // status: boolean;
     // file: [];
   }

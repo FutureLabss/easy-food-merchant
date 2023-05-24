@@ -489,11 +489,14 @@ export default function ModalPage(props: prop) {
     setConfirmOpen(true)
   }
 
-  function submit(e: React.FormEvent<HTMLFormElement>) {
+  function submit(e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    // mealInpucut.pictures = pictures
-    // ecreateMeal(mealInput)
-    mutate({...mealInput})
+    mutate({
+      ...mealInput,
+      pictures: []
+    })
+    // mealInput.pictures = pictures
+    // createMeal(mealInput)
   }
 
 
@@ -590,7 +593,7 @@ export default function ModalPage(props: prop) {
               {/* <InputLabel sx={{
                 fontSize:"14px", 
               fontWeight:"600", 
-              color:"#000000",
+              color:"#000000",:
             mb:"10px"}} 
               id="demo-simple-select-standard-label">
                 {" "}

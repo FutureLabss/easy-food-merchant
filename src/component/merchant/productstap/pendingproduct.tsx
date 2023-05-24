@@ -52,7 +52,7 @@ export default function PendingProductPage() {
     return (
         
 
-                <div style={{ marginTop: "16px", marginBottom: "150px" }}>
+                <div style={{ marginTop: "16px", marginBottom: "100px" }}>
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: "100%" }} aria-label="simple table">
 
@@ -90,7 +90,7 @@ export default function PendingProductPage() {
                     </TableContainer>
                     <Button 
                     onClick={handleOpenModal} 
-                    sx={{ mt: "20px", fontWeight: "700", fontSize: "16px", color: "#FFFFFF", textTransform: "capitalize", background: "#3BB273", borderRadius: "8px", position: "fixed",bottom: 87, width: { md: '355px', xs: "10rem" }, }} variant="contained" size="large" fullWidth>
+                    sx={{ mt: "20px", fontWeight: "700", fontSize: "16px", color: "#FFFFFF", textTransform: "capitalize", background: "#3BB273", borderRadius: "8px",  width: { md: '355px', xs: "100%" }, }} variant="contained" size="large" fullWidth>
                     {/* <Link href="/merchant/createproduct"> */}
                         Create Products
                     {/* </Link> */}

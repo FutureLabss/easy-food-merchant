@@ -58,7 +58,7 @@ export default function BottomBar() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   console.log({isMobile})
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) =>{
     event.preventDefault();
     setValue(newValue);
     // let array = newValue
@@ -98,13 +98,20 @@ export default function BottomBar() {
           // width: "inherit"
         }}
       >
-        <Box sx={{
-          borderTop:" 1px solid  rgba(0, 0, 0, .2)",
-         mt:"20px",
-      boxShadow: '2px 3px 10px rgba(0, 0, 0, .5)',
-      }}></Box>
+        <Box sx={{ 
+          mt:"50px",
+          boxShadow: '2px 3px 10px rgba(0, 0, 0, .5)',
+          // zIndex:5,
+        }}></Box>
       
-        <Stack sx={{Shadow: '2px 3px 10px gray',}}>
+        <Stack sx={{
+          mt:"30px",
+          boxShadow: '2px 3px 10px rgba(0, 0, 0, .5)',
+          // Shadow: '2px 3px 10px gray',
+        borderTop:"  solid  rgba(0, 0, 0, .2)",
+        position:"fixed",
+        bottom:'0px',
+        bgcolor:"white" }}>
           <Tabs
             variant={isMobile ? "scrollable" : "fullWidth"}
             scrollButtons="auto"
