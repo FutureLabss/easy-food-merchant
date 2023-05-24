@@ -43,7 +43,7 @@ export default function Context({children}: {children: ReactNode}){
             console.log(input)
             setAuth({ ...res.data });
             setToken(res.data.token);
-            router.push('/')
+            router.push('/overview')
             return res;
       })
       .catch((e) => {

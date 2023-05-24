@@ -9,10 +9,10 @@ export interface IAPIFilter {
     onSuccess?: (data?: IReturn) => void;
   }
   
-  export interface IQueryArgs<IReturn> {
+  export interface IQueryArgs<IArg, IReturn> {
     key: [string, IAPIFilter?];
   
-    callback: (arg: unknown) => Promise<IReturn>;
+    callback: (arg?:unknown) => Promise<IReturn>;
   }
   
 //   export interface IPaginatedQueryArgs<IReturn> {

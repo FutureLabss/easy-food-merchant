@@ -30,6 +30,7 @@ export default function SignInOption(props:prop){
        const router = useRouter();
     //    const [page, setPage]= React.useState(false)
     const [open, setOpen] = React.useState(false);
+    const [loading, setLoading] = React.useState(false)
     useEffect(() => {
   setOpen(true)    
     }, [])
