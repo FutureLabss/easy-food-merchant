@@ -15,7 +15,7 @@ import Link from 'next/link';
 // import ViewProduct from '../../component/merchant/viewproduct';
 import ViewProduct from '../../../component/merchant/viewproduct';
 import ModalPage from '../modal';
-
+import { useAllMeal } from "../../../hooks/query/product";
 
 
 
@@ -46,6 +46,10 @@ const rows = [
 ];
 
 export default function AllProduct() {
+    const { data  } = useAllMeal()
+
+
+
     const [open, setOpen] = React.useState(false);
     const [modaliiOpen, setModaliiOpen] = useState(false);
    
@@ -64,6 +68,11 @@ export default function AllProduct() {
     const handleClose = () => {
         
         setOpen(false);
+    };
+    const checkApi = () => {
+        console.log('check')
+        console.log(data)
+        
     };
     return (
         
@@ -114,6 +123,12 @@ export default function AllProduct() {
                             </TableBody>
                         </Table>
                     </TableContainer>
+                    <Button
+                    onClick={checkApi} 
+                    
+                     sx={{ mt: "20px", fontWeight: "700", fontSize: "16px", color: "#FFFFFF", textTransform: "capitalize", background: "#3BB273", borderRadius: "8px", }} variant="contained" size="large" fullWidth>
+                        Create Products
+                    </Button>
                     <Button
                     onClick={handleOpenModal} 
                     
