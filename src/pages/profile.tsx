@@ -2,7 +2,11 @@ import AppBar from '@/component/merchant/appbar'
 import Card1 from '@/component/merchant/card'
 // import Card2 from '../../component/merchant/cards'
 import HomeLayout from '@/layout/merchant'
-import {Box, Stack, Typography, Button, Accordion, AccordionSummary, AccordionDetails, Avatar} from '@mui/material'
+import {Box, Stack, Typography, Button, 
+  Accordion, AccordionSummary, 
+  AccordionDetails, Avatar, List,
+  IconButton,
+ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import {AiOutlineRight} from 'react-icons/ai'
 import {FiLogOut} from "react-icons/fi"
 import {MdSecurity} from "react-icons/md"
@@ -38,7 +42,7 @@ export default function ProfilePage() {
         <Typography  fontSize="16px" color="#000000" fontWeight="600">+234 708 675 4432</Typography>
         </Stack>
         <Stack direction="column" alignItems="center" justifyContent="center" mt="-4.64vw">
-      <Accordion style={{width: 370}}>
+      {/* <Accordion style={{width: 370}}>
         <AccordionSummary
            expandIcon={
  <AiOutlineRight />
@@ -56,15 +60,34 @@ export default function ProfilePage() {
           </Stack>
           </Stack>
         </AccordionSummary>
-        {/* <AccordionDetails>
+        <AccordionDetails>
           <Typography>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
-        </AccordionDetails> */}
-      </Accordion>
+        </AccordionDetails>
+      </Accordion> */}
 
-         <Accordion style={{width: 370}}>
+
+      <List style={{ width: 370 }} >
+        <ListItem button secondaryAction={
+                    <IconButton edge="end" >
+                      <AiOutlineRight />
+                    </IconButton>
+                  }>
+          <ListItemIcon>
+          <Avatar variant="rounded" sx={{ bgcolor: green[500], fontSize: "0.77em", width: 25, height: 25 }}>
+            <MdManageAccounts />
+         </Avatar>
+          </ListItemIcon>
+          <Stack direction="column" alignItems="flex-start">
+          <Typography fontSize="16.66px" fontWeight="700">Account Information</Typography>
+          <Typography fontSize="13.33px" fontWeight="400">Make changes to your account info.</Typography>
+          </Stack>
+        </ListItem>
+      </List>
+
+         {/* <Accordion style={{width: 370}}>
         <AccordionSummary
            expandIcon={
                 <AiOutlineRight />
@@ -82,16 +105,28 @@ export default function ProfilePage() {
           </Stack>
           </Stack>
         </AccordionSummary>
-        {/* <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails> */}
-      </Accordion>
+      </Accordion> */}
+
+<List style={{ width: 370 }} >
+        <ListItem button secondaryAction={
+                    <IconButton edge="end" >
+                      <AiOutlineRight />
+                    </IconButton>
+                  }>
+          <ListItemIcon>
+          <Avatar variant="rounded" sx={{ bgcolor: green[500], fontSize: "0.77em", width: 25, height: 25 }}>
+            <MdSecurity />
+         </Avatar>
+          </ListItemIcon>
+          <Stack direction="column" alignItems="flex-start">
+          <Typography fontSize="16.66px" fontWeight="700">Security</Typography>
+          <Typography fontSize="13.33px" fontWeight="400">Make changes to your account security</Typography>
+          </Stack>
+        </ListItem>
+      </List>
       
 
-      <Accordion style={{width: 370}}>
+      {/* <Accordion style={{width: 370}}>
         <AccordionSummary
            expandIcon={
            <AiOutlineRight />
@@ -122,14 +157,26 @@ export default function ProfilePage() {
     </Stack>
           </Stack>
         </AccordionSummary>
-        {/* <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails> */}
-      </Accordion>
+      </Accordion> */}
 
+<List style={{ width: 370 }} >
+        <ListItem button secondaryAction={
+                    <IconButton edge="end" >
+                      <AiOutlineRight />
+                    </IconButton>
+                  }>
+          <ListItemIcon>
+          <Avatar variant="rounded" sx={{ bgcolor: green[500], fontSize: "0.77em", width: 25, height: 25 }}>
+            <AiOutlineShoppingCart />
+         </Avatar>
+          </ListItemIcon>
+          <Stack direction="column" alignItems="flex-start">
+          <Typography fontSize="16.66px" fontWeight="700">View Orders</Typography>
+          <Typography fontSize="13.33px" fontWeight="400">Create Products</Typography>
+          </Stack>
+        </ListItem>
+      </List>
+{/* 
          <Accordion style={{width: 370}}>
         <AccordionSummary
            expandIcon={
@@ -148,13 +195,26 @@ export default function ProfilePage() {
           </Stack>
           </Stack>
         </AccordionSummary>
-        {/* <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails> */}
-      </Accordion>
+      </Accordion> */}
+
+<List style={{ width: 370 }} >
+        <ListItem button secondaryAction={
+                    <IconButton edge="end" >
+                      <AiOutlineRight />
+                    </IconButton>
+                  }>
+          <ListItemIcon>
+          <Avatar sx={{ bgcolor: "#E15554", fontSize: "0.77em", width: 25, height: 25 }} variant="rounded">
+            <FiLogOut />
+         </Avatar>
+          </ListItemIcon>
+          <Stack direction="column" alignItems="flex-start">
+          <Typography fontSize="16.66px" fontWeight="700">Logout</Typography>
+          <Typography fontSize="13.33px" fontWeight="400">Logout of your account</Typography>
+          </Stack>
+        </ListItem>
+      </List>
+
         </Stack>
         </Stack>
         </Box>
