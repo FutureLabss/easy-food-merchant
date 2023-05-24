@@ -12,7 +12,7 @@ import { ThemeOptions } from  '@mui/material'
 //     };
 //   }
 
-  export const theme: ThemeOptions = {
+  export const theme: ThemeOptions ={
     palette: {
       primary: {main:'#3BB273'},
       secondary: {main:'#FFFFFF'},
