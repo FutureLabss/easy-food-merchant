@@ -10,3 +10,4 @@ export  function useAllMeal(){
       };
       return useMerchantQuery(queryObject);
 }
+

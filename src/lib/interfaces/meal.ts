@@ -4,7 +4,8 @@ export interface IcreateMeal {
     preparation_time: number;
     category: string;
     pictures: string[];
-    // status: boolean;
+    meal_id: string;
+    status: boolean;
     // file: [];
   }
   
@@ -14,7 +15,8 @@ export interface IcreateMealModal {
     preparation_time: number;
     category: string;
     pictures: string[];
-    // status: boolean;
+    meal_id: string;
+    status: boolean;
     // file: [];
   }
   

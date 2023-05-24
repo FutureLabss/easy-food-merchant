@@ -4,13 +4,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 // import { CreateMerchantProfileApi } from "../pages/api/services/profile";
 
 export function useRegiserMutation<IArg, IReturn>({ callback, key, onSuccess }: IMutationArgs<IArg, IReturn>) {
-  const queryClient = useQueryClient();
+  const queryClient =useQueryClient();
   return useMutation(
     (data: IArg) => {
       return callback && callback(data);
     },
     {
-      onSuccess: (data) => {
+      onSuccess: (data) =>{
         queryClient.invalidateQueries(key);
         onSuccess && onSuccess(data);
       },

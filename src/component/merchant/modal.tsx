@@ -112,12 +112,9 @@ export default function ModalPage(props: prop) {
 
   function submit(e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    mutate({
-      ...mealInput,
-      pictures: []
-    })
-    // mealInput.pictures = pictures
-    // createMeal(mealInput)
+    // mealInpucut.pictures = pictures
+    // ecreateMeal(mealInput)
+    mutate({...mealInput})
   }
 
 
