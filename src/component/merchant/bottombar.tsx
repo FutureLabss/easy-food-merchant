@@ -58,7 +58,7 @@ export default function BottomBar() {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   console.log({isMobile})
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) =>{
     event.preventDefault();
     setValue(newValue);
     // let array = newValue
