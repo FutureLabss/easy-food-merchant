@@ -14,7 +14,7 @@ export function useOrderQueryObject() {
 export function useSingleOrderQuery(){
   const singleQuery: IQueryArgs<string, IOrder[]> = {
     key: ["order"],
-    callback:()=> getSingleOrderApi('all'),
+    callback:()=> getSingleOrderApi('single'),
   };
   return useMerchantQuery(singleQuery);
 

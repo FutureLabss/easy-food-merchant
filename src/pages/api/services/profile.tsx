@@ -1,6 +1,9 @@
 // import { ISignUp } from "@/lib/interfaces/signup";
+import { IMerchant } from "@/lib/interfaces/profile";
 import { ISignUp } from "../../../lib/interfaces/signup";
 import axios from "axios";
+import { MerchantDTO } from "@/lib/dto/meals";
+import { IMerchantDTO } from "@/lib/dto/profile";
 // interface state{
 //   data: string
 // }
@@ -20,12 +23,11 @@ const CreateMerchantProfileApi  = async (input: ISignUp) => {
 }
 
 
-const getMerchantProfileApi = async() =>{
+const getMerchantProfileApi = async(): Promise<IMerchant> =>{
     return await axios
-    .get(`/merchant`)
+    .get<IMerchantDTO>(`/merchant`)
     .then((res) =>{
-      console.log(res.data.result);
-      return res.data;
+      return convertToModel(res.data);
     })
     .catch((e) => {
       console.log({e})
@@ -89,6 +91,22 @@ const getMerchantProfileApi = async() =>{
         throw new Error(errMsg);
       });
   };
+
+  function convertToModel(merchant: IMerchantDTO): IMerchant {
+    return {
+      id: merchant._id,
+      user: merchant.user,
+      name: merchant.merchant_name,
+      logo:merchant.logo,
+      address: merchant.address,
+      openingHour: merchant.opening_hour,
+      closingHour: merchant.closing_hour,
+      phone:merchant.phone,
+      ratings:merchant.ratings,
+
+     
+    };
+  }
 
 
 

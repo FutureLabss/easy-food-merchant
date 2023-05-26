@@ -15,7 +15,7 @@ import Link from 'next/link';
 // import ViewProduct from '../../component/merchant/viewproduct';
 import ViewProduct from '../../../component/merchant/viewproduct';
 import ModalPage from '../modal';
-import { useAllMeal } from "../../../hooks/query/product";
+import { useAllMeal } from "../../../hooks/query/meal";
 
 
 
@@ -46,12 +46,11 @@ const rows = [
 ];
 
 export default function AllProduct() {
-    const { data  } = useAllMeal()
-
-
-
+    // const { data  } = useAllMeal()
     const [open, setOpen] = React.useState(false);
     const [modaliiOpen, setModaliiOpen] = useState(false);
+    const {data} = useAllMeal();
+    console.log({data})
    
     const handleOpenModal = () => {
         setModaliiOpen(true);
