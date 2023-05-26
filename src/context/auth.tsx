@@ -40,7 +40,9 @@ export default function Context({children}: {children: ReactNode}){
           .post("/auth/signin", input)
           .then((res) => {
             localStorage.setItem('token', JSON.stringify(res.data));
+            localStorage.setItem('my_id', JSON.stringify(res.data.id));
             console.log(input)
+            console.log({res})
             setAuth({ ...res.data });
             setToken(res.data.token);
             router.push('/')
@@ -61,6 +63,7 @@ export default function Context({children}: {children: ReactNode}){
         .post("/auth/signup", input)
         .then((res) => {
           localStorage.setItem('token', JSON.stringify(res.data));
+          localStorage.setItem('my_id', JSON.stringify(res.data.id));
           // setAuth({ ...res.data });
             setToken(res.data.token);
           router.push('/login')

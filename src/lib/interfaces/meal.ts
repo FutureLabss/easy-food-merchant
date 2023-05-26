@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+// export interface IcreateMeal {
+//     price: number;
+//     meal_name: string;
+//     preparation_time: number;
+//     category: string;
+//     pictures: string[];
+//     // status: boolean;
+//     // file: [];
+//   }
+
+ export interface ICreateMeal {
+    amount: number;
+    mealName: string;
+    category: string;
+    categoryText: string;
+    // pictures?: string[];
+    pictures?: File;
+    preparationTime: number;
+  }
+  
+export interface ICreateMealModal {
+  amount: number;
+  mealName: string;
+  category: string;
+  pictures?: File;
+  categoryText: string;
+  // pictures?: string[];
+  preparationTime: number;
+=======
 export interface IcreateMeal {
     price: number;
     mealName: string;
@@ -18,6 +48,7 @@ export interface IcreateMealModal {
     meal_id: string;
     status: boolean;
     // file: [];
+>>>>>>> a6b4e40cac6f334a9faa210b8ba507fbaaeee0c5
   }
 
   export interface Icategory{

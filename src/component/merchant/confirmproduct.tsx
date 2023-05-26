@@ -24,11 +24,16 @@ import ButtonAppBar from '../../component/merchant/backbar';
 import HomeLayout from '../../layout/merchant';
 import Link from 'next/link';
 
+import Image from "next/image"
+
+
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import ViewProduct from './viewproduct';
+
+import { ICreateMeal } from "../../lib/interfaces/meal"
 
 type state = {
     item1: string;
@@ -51,14 +56,22 @@ const product: state[] = [
         item3: "Impossible is nothing.",
     }
 ];
-type prop = {
+type productProps = {
     props?: string;
     open: boolean;
+    data?: ICreateMeal;
+    // img?: string;
     onClose: () => void;
 }
 
-export default function ConfirmProduct(props: prop) {
-    const { open, onClose } = props
+export default function ConfirmProduct(props: productProps) {
+    const { open, onClose, data,  } = props
+const imageUrl = data?.pictures ? URL.createObjectURL(data?.pictures) : ""
+console.log("my" )
+console.log(imageUrl )
+
+    // const img = URL.createObjectURL(data?.pictures)
+    // const
     // const [open, setOpen] = React.useState(true);
     // console.log("the status is", { open })
     // const [viewModal, setViewModal] = React.useState(false);
@@ -109,7 +122,11 @@ export default function ConfirmProduct(props: prop) {
                             <Typography sx={{ color: "#717C76", fontWeight: "400", fontSize: "16px" }}>Create your product creation details </Typography>
                             <Box sx={{ mt: "24px", mb: "23px" }}>
                                 <Typography sx={{ color: "#000000", fontWeight: "700", fontSize: "13.33px" }}>Product Image</Typography>
-                                <img src={`https://images.unsplash.com/photo-1551963831-b3b1ca40c98e`} height="116px" width="134px" style={{ borderRadius: "8px" }} />
+                                {/* {data?.pictures ? */}
+
+
+                                <Image src={imageUrl} height={116} width={134} style={{ borderRadius: "8px" }} alt="Meal Image" /> 
+                                {/* : ""} */}
                             </Box>
                             <Card sx={{ minWidth: 275, bgcolor: "#FAFAFA" }}>
                                 <CardContent>
@@ -118,7 +135,9 @@ export default function ConfirmProduct(props: prop) {
                                             Meal
                                         </Typography>
                                         <Typography sx={{ color: "#000000", fontWeight: "500", fontSize: "16px", mb: "12px" }} variant="body2">
-                                            Fried Rice and Chicken
+                                            
+                                            {data?.mealName}
+                                            
                                         </Typography>
                                     </Box>
                                     <Box>
@@ -142,7 +161,8 @@ export default function ConfirmProduct(props: prop) {
                                             Meal Category
                                         </Typography>
                                         <Typography sx={{ color: "#000000", fontWeight: "500", fontSize: "16px", mb: "12px" }} variant="body2">
-                                            Pre-Order Meal
+                                            
+                                            {data?.categoryText}
                                         </Typography>
                                     </Box>
                                     <Box>
@@ -150,7 +170,8 @@ export default function ConfirmProduct(props: prop) {
                                             Cooking Duration
                                         </Typography>
                                         <Typography sx={{ color: "#000000", fontWeight: "500", fontSize: "16px", mb: "12px" }} variant="body2">
-                                            1hr 30 mins
+                                            
+                                            {data?.preparationTime} mins
                                         </Typography>
                                     </Box>
 
