@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // export interface IcreateMeal {
 //     price: number;
 //     meal_name: string;
@@ -27,7 +26,7 @@ export interface ICreateMealModal {
   categoryText: string;
   // pictures?: string[];
   preparationTime: number;
-=======
+}
 export interface IcreateMeal {
     price: number;
     mealName: string;
@@ -48,7 +47,6 @@ export interface IcreateMealModal {
     meal_id: string;
     status: boolean;
     // file: [];
->>>>>>> a6b4e40cac6f334a9faa210b8ba507fbaaeee0c5
   }
 
   export interface Icategory{
