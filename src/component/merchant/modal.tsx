@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -27,6 +30,7 @@ import ImageUpload from "../ImageUpload";
 // import { useCreateMealApi } from '../../hooks/createMeal'
 // import { useMealCreate } from "../../"
 import { useMealCreate } from "../../hooks/mutaton/createMeal"
+import { IcreateMeal } from "@/lib/interfaces/meal";
 
 
 
@@ -84,7 +88,7 @@ export default function ModalPage(props: prop) {
   // const { data } = useMealCreate()
 
   const { data , mutate,  } = useMealCreate({onSuccess:()=>{}})
-  console.log(data)
+  console.log(mutate)
  
 
   const [mealInput, setMealInput] = useState({ price: 1000, meal_name: '', preparation_time: 10, category: "Fast-food" });
@@ -114,7 +118,12 @@ export default function ModalPage(props: prop) {
     e.preventDefault();
     // mealInpucut.pictures = pictures
     // ecreateMeal(mealInput)
-    mutate({...mealInput})
+    mutate({
+      ...mealInput,
+      pictures: [],
+      meal_id: "",
+      status: false
+    })
   }
 
 
@@ -208,32 +217,14 @@ export default function ModalPage(props: prop) {
 
           <Grid container spacing={3} mt={{ xs: "13px", sm: "21px", md: "0.5vw" }}>
             <Grid item xs={12} md={12} >
-              {/* <InputLabel sx={{
-                fontSize:"14px", 
-              fontWeight:"600", 
-              color:"#000000",:
-            mb:"10px"}} 
-              id="demo-simple-select-standard-label">
-                {" "}
-                Meal Category
-              </InputLabel> */}
               <Typography sx={{
                 fontSize: "14px",
                 fontWeight: "600",
                 color: "#000000",
                 // mb:"10px"
               }} >Meal Category</Typography>
-              {/* <FormControl fullWidth> */}
-              {/* <InputLabel 
-            sx={{
-              fontSize:"14px", 
-            fontWeight:"400", 
-            color:"#849089",
-          mt:"-10px"
-        }} 
-            id="demo-simple-select-standard-label">
-              {" "}
-              Meal Category</InputLabel> */}
+            {/* <FormControl> */}
+            {/* <InputLabel id="demo-simple-select-label">select meal</InputLabel> */}
               <Select
                 labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard"
@@ -261,6 +252,7 @@ export default function ModalPage(props: prop) {
                 {/* <MenuItem value={"tens"}>Twenty</MenuItem>
                   <MenuItem value={"tenss"}>Thirty</MenuItem> */}
               </Select>
+              {/* </FormControl> */}
               {/* </FormControl> */}
             </Grid>
           </Grid>

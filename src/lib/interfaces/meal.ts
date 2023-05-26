@@ -1,7 +1,7 @@
 export interface IcreateMeal {
     price: number;
-    meal_name: string;
-    preparation_time: number;
+    mealName: string;
+    preparationTime: number;
     category: string;
     pictures: string[];
     meal_id: string;
@@ -11,12 +11,40 @@ export interface IcreateMeal {
   
 export interface IcreateMealModal {
     price: number;
-    meal_name: string;
-    preparation_time: number;
+    mealName: string;
+    preparationTime: number;
     category: string;
     pictures: string[];
     meal_id: string;
     status: boolean;
     // file: [];
+  }
+
+  export interface Icategory{
+    name: string;
+  }
+  
+
+  export interface IPicture {
+    url: string;
+    publicId: string;
+  }
+  
+  export interface IMerchant {
+    id: string;
+    name: string;
+
+  }
+  
+  export interface IMeal {
+    id: string;
+    merchant: IMerchant;
+    mealName: string;
+    pictures: IPicture[];
+    category: string;
+    status: boolean;
+    price: number;
+    preparationTime: number;
+    createdAt: string;
   }
   

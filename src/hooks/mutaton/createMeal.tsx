@@ -1,8 +1,8 @@
 import { IMutationArgs, IMutationHook } from "../../lib/interfaces/query";
 import { useRegiserMutation } from "../helpers/registerMutation";
-import { createMealApi } from "../../pages/api/services/createMeal";
+import { createMealApi } from "../../pages/api/services/meal";
 import { IcreateMeal, IcreateMealModal } from "../../lib/interfaces/meal";
-// import { ISignUp, ISignUpForm } from "../../lib/interfaces/signup";
+// import { ISignUp, ISignUpForm } from "../../lib/interfaces/signup";~
 export function useMealCreate ({onSuccess}: IMutationHook){
     const mutateObject: IMutationArgs<IcreateMeal, IcreateMealModal>= {
         key:['meal'],

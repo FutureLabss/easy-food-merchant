@@ -22,6 +22,7 @@ const getAllOrderApi = async() =>{
     return await axios
       .get(`/order/${id}`)
       .then((res) => {
+        console.log(res.data);
         return res.data;
       })
       .catch((e) => {
