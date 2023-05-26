@@ -12,8 +12,8 @@ import { ISignUp } from "@/lib/interfaces/signup";
 
 interface AuthContextType {
     auth: any;
-    login:(data: any) => Promise<any>;
-    signUp:(data: any) => Promise<any>;
+    login:(data: ISignUp) => Promise<any>;
+    signUp:(data: ISignUp) => Promise<any>;
     // Logout: () => void;
 }
 

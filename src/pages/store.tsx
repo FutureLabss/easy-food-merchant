@@ -11,6 +11,7 @@ import {Box, Stack, Typography, Button, Switch, Card, CardContent} from '@mui/ma
 import {AiOutlineDown} from "react-icons/ai"
 import Link from 'next/link'
 import SimpleDialog from '@/component/merchant/modal/storeupdate';
+import {merchantProvider} from '@/context/merchant';
 // import {Box} from '@mui/material'
 
 
@@ -78,7 +79,20 @@ const IOSSwitch = styled((props: SwitchProps) => (
   },
 }));
 
+const opentime=[
+  "6am",
+  "8am",
+  "10am"
+]
+// const closetime=[
+//   "10pm",
+//   "8pm",
+//   "11pm"
+// ]
+
 export default function StorePage() {
+  const data = merchantProvider()
+  console.log({data})
   const [age, setAge] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false)
   const handleOpenModal = () => {
@@ -112,22 +126,21 @@ export default function StorePage() {
           <Stack direction="column" spacing="15px" justifyContent="flex-start">
 <Typography fontSize="14px" fontWeight="600">Opening Hour</Typography>
 <FormControl sx={{ m: 1, minWidth: 350 }} size="small">
-      <InputLabel id="demo-select-small" sx={{fontSize:"14px", fontWeight:"400", color:"#849089"}}>Select when your store is open for business</InputLabel>
-      <Select
+      <InputLabel id="demo-select-small" sx={{fontSize:"14px", fontWeight:"400", color:"#849089"}}>
+        Select when your store is open for business</InputLabel>
+      {data?.openingHour ? <Select
         labelId="demo-select-small"
         id="demo-select-small"
         value={age}
+        defaultValue={data?.openingHour}
         fullWidth
         label="Age"
         onChange={handleChange}
       >
-        <MenuItem value="">  
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </Select>
+        {opentime.map((time)=>(
+        <MenuItem value={time}>{time}</MenuItem>
+        ))}
+      </Select> :<></>}
     </FormControl>
           </Stack>
             <Stack direction="column" spacing="15px" justifyContent="flex-start">
@@ -142,12 +155,9 @@ export default function StorePage() {
         label="Age"
         onChange={handleChange}
       >
-        <MenuItem value="">  
-          <em>None</em>
-        </MenuItem>
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+         {opentime.map((time)=>(
+        <MenuItem value={time}>{time}</MenuItem>
+        ))}
       </Select>
     </FormControl>
           </Stack>
