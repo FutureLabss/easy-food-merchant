@@ -1,20 +1,30 @@
-export interface IcreateMeal {
-    price: number;
-    meal_name: string;
-    preparation_time: number;
+// export interface IcreateMeal {
+//     price: number;
+//     meal_name: string;
+//     preparation_time: number;
+//     category: string;
+//     pictures: string[];
+//     // status: boolean;
+//     // file: [];
+//   }
+
+ export interface ICreateMeal {
+    amount: number;
+    mealName: string;
     category: string;
-    pictures: string[];
-    // status: boolean;
-    // file: [];
+    categoryText: string;
+    // pictures?: string[];
+    pictures?: File;
+    preparationTime: number;
   }
   
-export interface IcreateMealModal {
-    price: number;
-    meal_name: string;
-    preparation_time: number;
-    category: string;
-    pictures: string[];
-    // status: boolean;
-    // file: [];
+export interface ICreateMealModal {
+  amount: number;
+  mealName: string;
+  category: string;
+  pictures?: File;
+  categoryText: string;
+  // pictures?: string[];
+  preparationTime: number;
   }
   

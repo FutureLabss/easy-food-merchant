@@ -85,7 +85,7 @@
 
 //   const { data , mutate,  } = useMealCreate({onSuccess:()=>{}})
 //   console.log(data)
- 
+
 
 //   const [mealInput, setMealInput] = useState({ price: 1000, meal_name: '', preparation_time: 10, category: "Fast-food", pictures: null });
 //   // const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -203,9 +203,9 @@
 //               mt:{xs:"10px", sm:"27px", md:"3vw"},
 //              mx:{xs:"15px", sm:"27px", md:"2.58vw"},
 //              }}>
-    
+
 //             <RiAddFill >
-    
+
 //             </RiAddFill>
 //             </Box>
 //         </Box> */}
@@ -399,6 +399,7 @@ import Link from 'next/link';
 import HomeLayout from '../../layout/merchant';
 import ConfirmProduct from './confirmproduct';
 import ImageUpload from "../ImageUpload";
+import Image from "next/image"
 
 
 
@@ -406,6 +407,7 @@ import ImageUpload from "../ImageUpload";
 // import { useCreateMealApi } from '../../hooks/createMeal'
 // import { useMealCreate } from "../../"
 import { useMealCreate } from "../../hooks/mutaton/createMeal"
+import { ICreateMeal } from "../../lib/interfaces/meal"
 
 
 
@@ -448,13 +450,13 @@ interface prop {
   onClose: () => void;
 }
 
-interface createMeal {
-  price: string;
-  meal_name: string;
-  preparation_time: string;
-  pictures: string[];
-  status: boolean;
-}
+// interface ICreateMeal {
+//   amount: number;
+//   mealName: string;
+//   category: string;
+//   pictures?: string[];
+//   preparationTime: number;
+// }
 
 
 
@@ -462,23 +464,31 @@ interface createMeal {
 export default function ModalPage(props: prop) {
   // const { data } = useMealCreate()
 
-  const { data , mutate,  } = useMealCreate({onSuccess:()=>{}})
+  const { data, mutate, } = useMealCreate({ onSuccess: () => { } })
   console.log(data)
- 
 
-  const [mealInput, setMealInput] = useState({ price: 1000, meal_name: '', preparation_time: 10, category: "Fast-food" });
+
+  // const [mealInput, setMealInput] = useState({ price: 1000, mealName: '', preparation_time: 10, category: "6464cf51cc4e3cd6ec7bd5d6", pictures: [] });
+  const [mealInput, setMealInput] = useState<ICreateMeal>({ amount: 0, mealName: '', preparationTime: 0, category: "6464cf51cc4e3cd6ec7bd5d6", categoryText: "",  });
   // const [selectedImage, setSelectedImage] = useState<File | null>(null);
-  const [pictures, setPictures] = useState<string[]>([]);
+  // const [categoryText, setCategoryText] = React.useState('')
+  const [imageUrl, setImageUrl] = useState("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setMealInput({ ...mealInput, [name]: value });
-    // if (validatePhoneNumber(value)) {
-    //   setPhoneNumber(value);
-    // }
   };
   const handleImageUpload = (file: File) => {
-    // setPictures(file);
-    // setMealInput({ ...mealInput, "pictures" : value });
+    const url = URL.createObjectURL(file)
+    setMealInput((prevData) => ({
+      ...prevData,
+      pictures: file
+    }))
+    setImageUrl(url)
+  };
+  const handleCategory = (event: SelectChangeEvent) => {
+    // setCategoryText(event.target.value as string);
+    setMealInput({ ...mealInput, categoryText: event.target.value });
+    console.log(mealInput)
   };
 
 
@@ -489,14 +499,16 @@ export default function ModalPage(props: prop) {
     setConfirmOpen(true)
   }
 
-  function submit(e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    mutate({
-      ...mealInput,
-      pictures: []
-    })
+    setConfirmOpen(true)
+    // mutate({
+    //   ...mealInput,
+    //   // pictures: []
+    // })
     // mealInput.pictures = pictures
-    // createMeal(mealInput)
+    console.log({ mealInput })
+    console.log({ imageUrl })
   }
 
 
@@ -570,53 +582,48 @@ export default function ModalPage(props: prop) {
             color: "#000000"
           }}>Product Image</Typography>
 
-          {/* <Box mt={{xs:"13px", sm:"21px", md:"1vw"}}
-         sx={{width: {xs:"39px", sm:"63px", md:"6.53vw"},
-         height: {xs:"39px", sm:"63px", md:"6.53vw"}, 
-         borderRadius:"16px", 
-         background: "#F4F5F5",
-         border: "1px dashed #99A39E"}}>
-            <Box sx={{
-              mt:{xs:"10px", sm:"27px", md:"3vw"},
-             mx:{xs:"15px", sm:"27px", md:"2.58vw"},
-             }}>
-    
-            <RiAddFill >
-    
-            </RiAddFill>
-            </Box>
-        </Box> */}
-          <ImageUpload onUpload={handleImageUpload} />
+
+          <Box style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <ImageUpload onUpload={handleImageUpload} />
+
+            <Image src={imageUrl} alt={"Image"} height={100} width={100} style={{ borderRadius: "8px" }} />
+          </Box>
+
 
           <Grid container spacing={3} mt={{ xs: "13px", sm: "21px", md: "0.5vw" }}>
             <Grid item xs={12} md={12} >
-              {/* <InputLabel sx={{
-                fontSize:"14px", 
-              fontWeight:"600", 
-              color:"#000000",:
-            mb:"10px"}} 
-              id="demo-simple-select-standard-label">
-                {" "}
-                Meal Category
-              </InputLabel> */}
+
               <Typography sx={{
                 fontSize: "14px",
                 fontWeight: "600",
                 color: "#000000",
                 // mb:"10px"
               }} >Meal Category</Typography>
-              {/* <FormControl fullWidth> */}
-              {/* <InputLabel 
-            sx={{
-              fontSize:"14px", 
-            fontWeight:"400", 
-            color:"#849089",
-          mt:"-10px"
-        }} 
-            id="demo-simple-select-standard-label">
-              {" "}
-              Meal Category</InputLabel> */}
+
+              
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
               <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                name="categoryText"
+                // value={age}
+                label="Category"
+              onChange={handleCategory}
+              >
+                      
+                 <MenuItem value={"Pre-Order Meal"}>Pre-Order Meal</MenuItem>
+                <MenuItem value={"Fast Food"}>Fast Food</MenuItem>
+                <MenuItem value={"Vegetables"}>Vegetables</MenuItem>
+                <MenuItem value={"Snacks"}>Snacks</MenuItem>
+                <MenuItem value={"Drinks"}>Drinks</MenuItem>
+              
+              </Select>
+            </FormControl>
+          </Box>
+              
+              {/* <Select
                 labelId="demo-simple-select-standard-label"
                 id="demo-simple-select-standard"
                 defaultValue="Select Category"
@@ -629,7 +636,6 @@ export default function ModalPage(props: prop) {
                 // onChange={onChange}
                 label="Select Category"
               >
-                {/* <MenuItem value={"none"}> Select Category </MenuItem> */}
                 {product.map((item, title) => (
                   <Box key={item.item1}>
                     <MenuItem > {item.item1} </MenuItem>
@@ -638,14 +644,23 @@ export default function ModalPage(props: prop) {
                     <MenuItem > {item.item4} </MenuItem>
                     <MenuItem > {item.item5} </MenuItem>
                   </Box>
-                  //   <MenuItem > {item.item2} </MenuItem>
                 ))}
-                {/* <MenuItem value={"tens"}>Twenty</MenuItem>
-                  <MenuItem value={"tenss"}>Thirty</MenuItem> */}
-              </Select>
-              {/* </FormControl> */}
+              </Select> */}
+             
             </Grid>
           </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
           <Grid container mt={{ xs: "13px", sm: "21px", md: "1vw" }}>
             <Grid item xs={12} md={12}>
               <InputLabel sx={{
@@ -665,7 +680,7 @@ export default function ModalPage(props: prop) {
                 //   defaultValue={data.title}
                 //   value={data.title}
                 //   onChange={onChange}
-                name="meal_name"
+                name="mealName"
                 sx={{ mt: "10px" }}
               />
             </Grid>
@@ -714,7 +729,27 @@ export default function ModalPage(props: prop) {
                 //   defaultValue={data.title}
                 //   value={data.title}
                 //   onChange={onChange}
-                name="price"
+                name="amount"
+                sx={{ mt: "10px" }}
+              />
+            </Grid>
+          </Grid>
+          <Grid container mt={{ xs: "13px", sm: "21px", md: "1vw" }}>
+            <Grid item xs={12} md={12}>
+              <InputLabel sx={{
+                fontSize: "14px",
+                fontWeight: "600",
+                color: "#000000"
+              }}>
+                Preperation Time
+              </InputLabel>
+              <TextField
+                label="Preperation Time"
+                size="small"
+                variant="outlined"
+                fullWidth
+                onChange={handleChange}
+                name="preparationTime"
                 sx={{ mt: "10px" }}
               />
             </Grid>
@@ -743,7 +778,7 @@ export default function ModalPage(props: prop) {
             {/* </Link> */}
           </Box>
         </Stack>
-        <ConfirmProduct open={confirmopen} onClose={handleCloseModal} />
+        <ConfirmProduct data={mealInput} open={confirmopen} onClose={handleCloseModal} />
         {/* </HomeLayout> */}
       </Dialog>
     </Stack>
