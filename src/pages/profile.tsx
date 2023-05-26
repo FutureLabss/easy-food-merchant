@@ -19,7 +19,7 @@ import Link from 'next/link'
 // import {Box} from '@mui/material'
 import profile from "@/images/merchant/Profilephoto.png"
 import Image from "next/image"
-import { useMerchantProfile } from '@/hooks/query/profile'
+// import { useMerchantProfile } from '@/hooks/query/profile'
 
 export default function ProfilePage() {
   // const {data} = useMerchantProfile();
